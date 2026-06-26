@@ -230,7 +230,7 @@ export default function MentorView({ token }: MentorViewProps) {
             <span className="font-bold text-gray-700">Chat Session Log</span>
             <div className="flex items-center gap-1 font-semibold uppercase text-violet-700 text-[10px] tracking-wider">
               <Sparkles className="w-4 h-4 fill-violet-200" />
-              <span>Gemini Engine Active</span>
+              <span>Offline Mentor Active</span>
             </div>
           </div>
 

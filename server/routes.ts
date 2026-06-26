@@ -3,7 +3,6 @@ import { db } from "./db.js";
 import multer from "multer";
 import path from "path";
 import { execFileSync } from "child_process";
-import { GoogleGenAI, Type } from "@google/genai";
 
 export const routes = Router();
 
@@ -34,11 +33,9 @@ function authenticate(req: Request, res: Response, next: NextFunction) {
 
 // Check AI status
 routes.get("/api/status", (req: Request, res: Response) => {
-  const key = process.env.GEMINI_API_KEY;
-  const isAvailable = !!key && key !== "MY_GEMINI_API_KEY" && key.trim() !== "";
   res.json({
-    aiActive: isAvailable,
-    mode: isAvailable ? "AI Mode (Google Gemini Active)" : "Offline Demo Mode (Local Rule-based Matching)",
+    aiActive: false,
+    mode: "Offline NLP Mode (Local analysis only)",
     localTime: new Date().toISOString()
   });
 });
@@ -420,72 +417,16 @@ routes.post("/api/profile", authenticate, (req: Request, res: Response) => {
 });
 
 // Call AI (or fallback to Rule-based) to analyze Profile completeness & give precise guidance
-routes.post("/api/profile/analyze", authenticate, async (req: Request, res: Response) => {
+routes.post("/api/profile/analyze", authenticate, (req: Request, res: Response) => {
   const user = (req as any).user;
   const profile = db.careerProfiles.findOne(p => p.userId === user.id);
   if (!profile) return res.status(404).json({ error: "Profile not found." });
 
-  const skillsList = db.skills.find(s => s.userId === user.id);
-  
-  const key = process.env.GEMINI_API_KEY;
-  const isAvailable = !!key && key !== "MY_GEMINI_API_KEY" && key.trim() !== "";
-  
-  if (isAvailable) {
-    try {
-      const ai = new GoogleGenAI({
-        apiKey: key,
-        httpOptions: { headers: { "User-Agent": "aistudio-build" } }
-      });
-
-      const prompt = `Analyze this student/career candidate profile and return assessment scores and professional guidance.
-      Candidate Bio: "${profile.bio}"
-      Headline: "${profile.headline}"
-      Career Goals: "${profile.careerGoals}"
-      Technical Skills: ${JSON.stringify(profile.technicalSkills || [])}
-      Active Verified Skills: ${JSON.stringify(skillsList.map(s => s.name))}
-      Soft Skills: ${JSON.stringify(profile.softSkills || [])}
-      Certifications: ${JSON.stringify(profile.certifications || [])}
-      
-      Provide your response in JSON format. Do not include markdown tags. Format:
-      {
-        "employabilityScore": <number between 10 and 100>,
-        "careerReadinessScore": <number between 10 and 100>,
-        "strengths": [<string>, <string>, ...],
-        "weaknesses": [<string>, <string>, ...],
-        "suggestions": [<string>, <string>, ...]
-      }`;
-
-      const response = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
-        contents: prompt,
-        config: {
-          responseMimeType: "application/json"
-        }
-      });
-
-      const parsed = JSON.parse(response.text?.trim() || "{}");
-      
-      // Update scores based on analysis
-      if (parsed.employabilityScore) {
-        db.careerProfiles.update(profile.id, {
-          employabilityScore: parsed.employabilityScore,
-          careerReadinessScore: parsed.careerReadinessScore || parsed.employabilityScore + 3
-        });
-      }
-
-      return res.json(parsed);
-    } catch (err) {
-      console.warn("Gemini Profile Score Analysis failed, falling back to rule-based:", err);
-    }
-  }
-
-  // RULE-BASED FALLBACK:
   const baseMetrics = calculateOfflineProfileMetrics(profile);
   const strengths: string[] = [];
   const weaknesses: string[] = [];
   const suggestions: string[] = [];
 
-  // Evaluate strengths
   if (profile.technicalSkills.length >= 4) {
     strengths.push("Good foundation of technical core skills");
   } else {
@@ -513,7 +454,6 @@ routes.post("/api/profile/analyze", authenticate, async (req: Request, res: Resp
     suggestions.push("Write a summary of your career passions, college projects, and tech competencies in the bio field");
   }
 
-  // Fill in default content if empty
   if (strengths.length === 0) strengths.push("Profile holds standard starter database enrollment");
   if (weaknesses.length === 0) weaknesses.push("None identified yet. Add more details to trigger deeper analyses");
   if (suggestions.length === 0) suggestions.push("Take technical RIASEC interest tests below to identify matching skill paths");
@@ -742,7 +682,7 @@ function extractResumeStatsOffline(filename: string, fileText: string, targetCar
   };
 }
 
-routes.post("/api/resumes/analyze", authenticate, upload.single("resume"), async (req: Request, res: Response) => {
+routes.post("/api/resumes/analyze", authenticate, upload.single("resume"), (req: Request, res: Response) => {
   const user = (req as any).user;
   const profile = db.careerProfiles.findOne(p => p.userId === user.id);
   const advisory = updateCareerRecommendation(user) || {
@@ -758,90 +698,11 @@ routes.post("/api/resumes/analyze", authenticate, upload.single("resume"), async
   }
 
   const fileName = req.file.originalname;
-  // Convert binary buffer to standard string representation
   const fileText = req.file.buffer.toString("utf-8");
 
-  const key = process.env.GEMINI_API_KEY;
-  const isAvailable = !!key && key !== "MY_GEMINI_API_KEY" && key.trim() !== "";
-
-  // Compute a baseline offline structure
   const offlineResult = extractResumeStatsOffline(fileName, fileText, targetCareer);
   const careerCompare = compareResumeToCareer(offlineResult.extractedSkills, careerSkills);
 
-  if (isAvailable) {
-    try {
-      const ai = new GoogleGenAI({
-        apiKey: key,
-        httpOptions: { headers: { "User-Agent": "aistudio-build" } }
-      });
-
-      const prompt = `Conduct a professional ATS scan and resume review for the file "${fileName}" targeted at the role "${targetCareer}".
-      Sample Extracted text terms: ${offlineResult.extractedSkills.join(", ")}
-      
-      Respond in strict JSON format. Do not write normal conversational text. Structure:
-      {
-        "overallScore": <number between 10 and 100>,
-        "atsScore": <number between 10 and 100>,
-        "formatScore": <number between 10 and 100>,
-        "skillsScore": <number between 10 and 100>,
-        "educationScore": <number between 10 and 100>,
-        "experienceScore": <number between 10 and 100>,
-        "keywordsScore": <number between 10 and 100>,
-        "strengths": [<string>, <string>, ...],
-        "weaknesses": [<string>, <string>, ...],
-        "suggestions": [<string>, <string>, ...],
-        "missingSkills": [<string>, <string>, ...],
-        "extractedSkills": [<string>, <string>, ...]
-      }`;
-
-      const response = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
-        contents: prompt,
-        config: {
-          responseMimeType: "application/json"
-        }
-      });
-
-      const parsed = JSON.parse(response.text?.trim() || "{}");
-      
-      // Save analysis results to database
-      const analysis = db.resumeAnalysis.insert({
-        userId: user.id,
-        fileName,
-        overallScore: parsed.overallScore || offlineResult.overallScore,
-        atsScore: parsed.atsScore || offlineResult.atsScore,
-        formatScore: parsed.formatScore || offlineResult.formatScore,
-        skillsScore: parsed.skillsScore || offlineResult.skillsScore,
-        educationScore: parsed.educationScore || offlineResult.educationScore,
-        experienceScore: parsed.experienceScore || offlineResult.experienceScore,
-        keywordsScore: parsed.keywordsScore || offlineResult.keywordsScore,
-        strengths: parsed.strengths || offlineResult.strengths,
-        weaknesses: parsed.weaknesses || offlineResult.weaknesses,
-        suggestions: parsed.suggestions || offlineResult.suggestions,
-        missingSkills: parsed.missingSkills || careerCompare.missingCareerSkills || offlineResult.missingSkills,
-        extractedSkills: parsed.extractedSkills || offlineResult.extractedSkills,
-        recommendedCareer: targetCareer,
-        recommendedCareerSkills: careerSkills,
-        careerMatchScore: careerCompare.matchScore,
-        careerMissingSkills: careerCompare.missingCareerSkills
-      });
-
-      // Boost employability score based on resume upload
-      if (profile) {
-        db.careerProfiles.update(profile.id, {
-          employabilityScore: Math.min(parsed.overallScore || offlineResult.overallScore, 100),
-          recommendedCareer: targetCareer,
-          recommendedCareerSkills: careerSkills
-        });
-      }
-
-      return res.status(201).json(analysis);
-    } catch (err) {
-      console.warn("Gemini resume parser failed, falling back to rule-based:", err);
-    }
-  }
-
-  // Save the pre-programmed offline results which exactly mirror Saniya's screenshots!
   const analysis = db.resumeAnalysis.insert({
     userId: user.id,
     fileName,
@@ -853,7 +714,6 @@ routes.post("/api/resumes/analyze", authenticate, upload.single("resume"), async
     recommendedCareerSkills: careerSkills
   });
 
-  // Boost profile score
   if (profile) {
     db.careerProfiles.update(profile.id, {
       employabilityScore: offlineResult.overallScore,
@@ -862,7 +722,7 @@ routes.post("/api/resumes/analyze", authenticate, upload.single("resume"), async
     });
   }
 
-  res.status(201).json(analysis);
+  return res.status(201).json(analysis);
 });
 
 // ==========================================
@@ -930,46 +790,11 @@ routes.delete("/api/skills/:id", authenticate, (req: Request, res: Response) => 
   res.json({ success: deleted });
 });
 
-// AI Suggestions (Gemini vs Rule-based fallback)
-routes.post("/api/skills/suggestions", authenticate, async (req: Request, res: Response) => {
+// AI Suggestions (Local rule-based recommendations)
+routes.post("/api/skills/suggestions", authenticate, (req: Request, res: Response) => {
   const user = (req as any).user;
-  const profile = db.careerProfiles.findOne(p => p.userId === user.id) || {};
   const currentSkills = db.skills.find(s => s.userId === user.id).map(s => s.name);
 
-  const headline = profile.headline || "Software Engineer";
-  const key = process.env.GEMINI_API_KEY;
-  const isAvailable = !!key && key !== "MY_GEMINI_API_KEY" && key.trim() !== "";
-
-  if (isAvailable) {
-    try {
-      const ai = new GoogleGenAI({
-        apiKey: key,
-        httpOptions: { headers: { "User-Agent": "aistudio-build" } }
-      });
-
-      const prompt = `Given a developer/professional with headline/interests: "${headline}"
-      and their current skills: ${JSON.stringify(currentSkills)},
-      suggest 6 key high-industry-value skills they should learn next.
-      Provide the result in clean JSON format:
-      [
-        {"name": "<skill name>", "category": "<framework|language|tool|technical>", "reason": "<short reason>"},
-        ...
-      ]`;
-
-      const response = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
-        contents: prompt,
-        config: { responseMimeType: "application/json" }
-      });
-
-      const suggested = JSON.parse(response.text?.trim() || "[]");
-      return res.json(suggested);
-    } catch (err) {
-      console.warn("Failed giving AI suggestions, using local system:", err);
-    }
-  }
-
-  // RULE-BASED FALLBACK
   const localRepo: Array<{ name: string; category: string; reason: string }> = [
     { name: "React.js", category: "framework", reason: "Standard library for building modern fluid web user interfaces" },
     { name: "Node.js", category: "framework", reason: "High throughput server-side runtime essential for full-stack API engineers" },
@@ -1198,91 +1023,52 @@ routes.post("/api/mentor/chats/:chatId/messages", authenticate, async (req: Requ
   const userMsg = { role: "user", content: message, timestamp: new Date().toISOString() };
   messages.push(userMsg);
 
-  // Check AI state
-  const key = process.env.GEMINI_API_KEY;
-  const isAvailable = !!key && key !== "MY_GEMINI_API_KEY" && key.trim() !== "";
+  // OFFLINE fallback counselor response
+  const raw = message.toLowerCase();
+  const name = user.name || "friend";
 
   let replyText = "";
-
-  if (isAvailable) {
-    try {
-      const ai = new GoogleGenAI({
-        apiKey: key,
-        httpOptions: { headers: { "User-Agent": "aistudio-build" } }
-      });
-
-      // Construct a very helpful career counselor instruction
-      const chatInstance = ai.chats.create({
-        model: "gemini-3.5-flash",
-        config: {
-          systemInstruction: `You are an expert Smart Career Advisor and tech mentor.
-          Provide precise, practical, career suggestions, resume advice, and interview preparation.
-          The user's career details are:
-          - Target Headline: "${profile.headline || "Software Engineer"}"
-          - Bio summary: "${profile.bio || "Computer science student"}"
-          - Certifications: ${JSON.stringify(profile.certifications || [])}
-          - Skills: ${JSON.stringify(currentSkills)}
-          
-          Give detailed, professional, formatting-rich, encouraging responses using markdown. Keep your advice humble and human.`
-        }
-      });
-
-      // Standardize messages in model input format
-      // Load previous elements
-      const response = await chatInstance.sendMessage({ message: message });
-      replyText = response.text || "";
-    } catch (err) {
-      console.warn("Failed sending Gemini mentor chat message, using offline response:", err);
-    }
-  }
-
-  // OFFLINE fallback counselor response
-  if (!replyText) {
-    const raw = message.toLowerCase();
-    const name = user.name || "friend";
+  if (raw.includes("resume")) {
+    replyText = `Hello ${name}! Here are five core tips to improve your resume immediately:
     
-    if (raw.includes("resume")) {
-      replyText = `Hello ${name}! Here are five core tips to improve your resume immediately:
-      
 1. **Quantify achievements using metrics**: Instead of saying "developed web application", say "*Built React portal boosting data display efficiency by 25%*".
 2. **Add direct GitHub URLs**: Ensure evaluators can immediately view your code repository.
 3. **Showcase "Relevant Coursework"**: List DSA, Databases, Systems alongside your degree to validate your foundations.
 4. **Detail hackathon active roles**: Specify original logic solved rather than generic collaboration.
 5. **Tailor skills lists**: Exclude redundant descriptors and sort skills logically by type (e.g. active languages vs. frameworks).`;
-    } else if (raw.includes("interview") || raw.includes("prepare")) {
-      replyText = `Hello ${name}. Preparing for technical/personality interviews is an exciting process! Focus on these critical elements:
+  } else if (raw.includes("interview") || raw.includes("prepare")) {
+    replyText = `Hello ${name}. Preparing for technical/personality interviews is an exciting process! Focus on these critical elements:
 
 * **Foundational DSA (Data Structures)**: Code everyday operations for String mutations, Binary Search trees, and recursion.
 * **STAR response format for behavioral Qs**: Situate the **Situation**, **Task**, **Action**, and **Result** inside your hackathon project explanations.
 * **Practice system designs**: Understand how client browser requests route via Express APIs to databases securely.
 * **Mock questions**: Do multiple timed mock trials under the *"Assessments"* tab of our advisor app!`;
-    } else if (raw.includes("skills") || raw.includes("learn next")) {
-      replyText = `Great question, ${name}! Based on your profile headline "${profile.headline || "Software Developer"}", here is your priority roadmap:
+  } else if (raw.includes("skills") || raw.includes("learn next")) {
+    replyText = `Great question, ${name}! Based on your profile headline "${profile.headline || "Software Developer"}", here is your priority roadmap:
 
 1. **Framework Core**: Add **React.js** and **Node.js** to complete full-stack delivery frameworks.
 2. **Coding robustness**: Master **TypeScript** to code safely with static checks.
 3. **Deployment**: Acquire **Docker** and **AWS Cloud practitioner** badges to containerize applications on cloud networks.
 4. **Integration**: Master implementing secure REST APIs connecting frontend clients to MySQL databases.`;
-    } else if (raw.includes("career path") || raw.includes("pursue")) {
-      replyText = `Identifying matching careers relies on correlating interests to skillset indexes, ${name}.
-      
+  } else if (raw.includes("career path") || raw.includes("pursue")) {
+    replyText = `Identifying matching careers relies on correlating interests to skillset indexes, ${name}.
+    
 Looking at your profile ("${profile.headline || "Tech specialist"}") carrying verified skills (${currentSkills.join(", ") || "C, Java, Python"}), here is what fits you:
-      
+    
 * **Full Stack Development**: Recommended due to your HTML, CSS, JavaScript, and database foundations.
 * **Data Science / AI/ML**: Ideal if you expand on Python models using opencv or scikit libraries.
 * **Cyber Security**: Crucial if you enjoy network configurations and penetration protocols.
-      
+    
 Take the **Holland RIASEC Career Interest test** under the **Assessments** tab to solidify your alignment scores!`;
-    } else {
-      replyText = `Hi ${name}! As your AI Career Mentor, I am here to help you secure your dream career. Under this console, you can ask me questions about:
-      
+  } else {
+    replyText = `Hi ${name}! As your AI Career Mentor, I am here to help you secure your dream career. Under this console, you can ask me questions about:
+    
 * 📄 **Resume enhancements** and ATS formats
 * 💡 **Skills to learn next** or custom learning materials
 * 🎯 **Interview mockups and technical checklists**
 * 🗺️ **Choosing career pathways** based on RIASEC evaluation
-      
+    
 What would you like to plan today?`;
-    }
   }
 
   const assistantMsg = { role: "assistant", content: replyText, timestamp: new Date().toISOString() };

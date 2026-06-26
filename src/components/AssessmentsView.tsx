@@ -107,9 +107,9 @@ export default function AssessmentsView({ token }: AssessmentsViewProps) {
           text: "Analyze the sequence: 2, 6, 12, 20, 30, what number comes next?",
           options: [
             { label: "42 (Sequence is n² + n)", value: "correct" },
-            { label: "38", value: "wrong" },
-            { label: "40", value: "wrong" },
-            { label: "44", value: "wrong" }
+            { label: "38", value: "wrong1" },
+            { label: "40", value: "wrong2" },
+            { label: "44", value: "wrong3" }
           ]
         },
         {

@@ -856,13 +856,13 @@
     "employabilityScore": 65,
     "careerReadinessScore": 100,
     "id": "rec_1782379486150_y7zlr",
-    "recommendedCareer": "Full-Stack Developer",
+    "recommendedCareer": "Data Scientist",
     "recommendedCareerSkills": [
-      "React.js",
-      "Node.js",
-      "TypeScript",
-      "REST APIs",
-      "AWS/Cloud Services"
+      "Python",
+      "Pandas",
+      "scikit-learn",
+      "SQL",
+      "Machine Learning"
     ]
   },
   {
