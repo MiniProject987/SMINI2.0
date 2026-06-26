@@ -11,7 +11,7 @@ import {
   ChevronRight,
   Sparkles
 } from "lucide-react";
-import { CareerProfile, SkillItem, LearningGoal } from "../types";
+import { CareerProfile, SkillItem, LearningGoal, CourseItem } from "../types";
 
 interface DashboardViewProps {
   setActiveTab: (tab: string) => void;
@@ -22,8 +22,13 @@ export default function DashboardView({ setActiveTab, token }: DashboardViewProp
   const [profile, setProfile] = useState<CareerProfile | null>(null);
   const [skills, setSkills] = useState<SkillItem[]>([]);
   const [goals, setGoals] = useState<LearningGoal[]>([]);
+  const [recommendedCourses, setRecommendedCourses] = useState<CourseItem[]>([]);
+  const [recommendedCareer, setRecommendedCareer] = useState<string | null>(null);
+  const [recommendedSkills, setRecommendedSkills] = useState<string[]>([]);
+  const [salaryEstimate, setSalaryEstimate] = useState<string | null>(null);
   const [completedGoalsCount, setCompletedGoalsCount] = useState("0/0");
   const [loading, setLoading] = useState(true);
+  const [courseLoading, setCourseLoading] = useState(true);
 
   const fetchDashboardData = async () => {
     if (!token) return;
@@ -36,6 +41,10 @@ export default function DashboardView({ setActiveTab, token }: DashboardViewProp
       if (profRes.ok) {
         const profData = await profRes.json();
         setProfile(profData);
+        if (profData.recommendedCareer) {
+          setRecommendedCareer(profData.recommendedCareer);
+          setRecommendedSkills(Array.isArray(profData.recommendedCareerSkills) ? profData.recommendedCareerSkills : []);
+        }
       }
 
       // Fetch user skills
@@ -65,11 +74,41 @@ export default function DashboardView({ setActiveTab, token }: DashboardViewProp
     }
   };
 
+  const fetchCourseRecommendations = async () => {
+    if (!token) return;
+    try {
+      setCourseLoading(true);
+      const res = await fetch("/api/courses/recommendations", {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setRecommendedCourses(data.recommendedCourses || []);
+        setRecommendedCareer(data.recommendedCareer || null);
+        setRecommendedSkills(Array.isArray(data.recommendedSkills) ? data.recommendedSkills : []);
+        setSalaryEstimate(data.salaryEstimate || null);
+      }
+    } catch (err) {
+      console.error("Error loading course recommendations:", err);
+    } finally {
+      setCourseLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetchDashboardData();
+    fetchCourseRecommendations();
   }, [token]);
 
-  // Calculate dynamic skill average level text
+  useEffect(() => {
+    const refreshDashboard = () => {
+      fetchDashboardData();
+      fetchCourseRecommendations();
+    };
+    window.addEventListener("profileUpdated", refreshDashboard);
+    return () => window.removeEventListener("profileUpdated", refreshDashboard);
+  }, [token]);
+
   const getAvgSkillText = () => {
     if (skills.length === 0) return "—";
     const totalProgress = skills.reduce((sum, s) => sum + s.progress, 0);
@@ -212,45 +251,121 @@ export default function DashboardView({ setActiveTab, token }: DashboardViewProp
         </div>
       </div>
 
-      {/* Quick Actions Grid */}
-      <div className="space-y-4" id="quick-actions-section">
-        <h3 className="text-slate-900 font-bold text-lg tracking-tight">Quick Actions</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-          {/* Action 1 */}
-          <button 
-            onClick={() => setActiveTab("assessments")}
-            id="action-card-assessments"
-            className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm text-center flex flex-col items-center justify-center gap-3 transition-all duration-150 hover:-translate-y-1 hover:shadow-md cursor-pointer group"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-650 flex items-center justify-center group-hover:scale-105 transition-transform">
-              <Brain className="w-5 h-5 text-indigo-500 fill-indigo-100" />
-            </div>
-            <span className="text-xs font-bold text-slate-700 group-hover:text-indigo-600 transition-colors uppercase tracking-wider">Take Assessment</span>
-          </button>
+      {/* Career Intelligence Summary */}
+      <div className="space-y-4" id="career-advisory-section">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div>
+            <h3 className="text-slate-900 font-bold text-lg tracking-tight">Career Intelligence Summary</h3>
+            <p className="text-sm text-slate-500">Your current recommendation, skill gap, and selected learning roadmap.</p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <button
+              onClick={() => setActiveTab("profile")}
+              className="px-4 py-2 text-[11px] font-bold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all"
+            >
+              Refine Profile
+            </button>
+            <button
+              onClick={() => setActiveTab("resume")}
+              className="px-4 py-2 text-[11px] font-bold rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-all"
+            >
+              Analyze Resume
+            </button>
+            <button
+              onClick={() => setActiveTab("jobs")}
+              className="px-4 py-2 text-[11px] font-bold rounded-xl bg-violet-50 text-violet-700 hover:bg-violet-100 transition-all"
+            >
+              See Job Matches
+            </button>
+          </div>
+        </div>
 
-          {/* Action 2 */}
-          <button 
-            onClick={() => setActiveTab("resume")}
-            id="action-card-resume"
-            className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm text-center flex flex-col items-center justify-center gap-3 transition-all duration-150 hover:-translate-y-1 hover:shadow-md cursor-pointer group"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-650 flex items-center justify-center group-hover:scale-105 transition-transform">
-              <FileText className="w-5 h-5 text-indigo-500 fill-indigo-100" />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <p className="text-[10px] uppercase tracking-wider font-bold text-slate-500">Suggested Career Path</p>
+                <h4 className="mt-2 text-lg font-bold text-slate-900">{recommendedCareer || profile?.recommendedCareer || "Review your profile"}</h4>
+              </div>
+              <Sparkles className="w-5 h-5 text-indigo-500" />
             </div>
-            <span className="text-xs font-bold text-slate-700 group-hover:text-indigo-600 transition-colors uppercase tracking-wider">Analyze Resume</span>
-          </button>
+            <p className="text-xs text-slate-500 leading-relaxed">This recommendation is based on your profile, skills, and assessment history.</p>
+            {salaryEstimate && (
+              <p className="mt-3 text-sm text-slate-700 font-semibold">Estimated market salary: <span className="text-indigo-600">{salaryEstimate}</span></p>
+            )}
+            <div className="mt-4 space-y-2">
+              {recommendedSkills && recommendedSkills.length ? (
+                <>
+                  <p className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Priority skills</p>
+                  <div className="flex flex-wrap gap-2">
+                    {recommendedSkills.map(skill => (
+                      <span key={skill} className="text-[10px] font-semibold uppercase tracking-wider bg-slate-50 border border-slate-200 rounded-full px-3 py-1 text-slate-700">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <p className="text-[11px] text-slate-400">Add skills and preferred roles to generate a recommended career path.</p>
+              )}
+            </div>
+          </div>
 
-          {/* Action 3 */}
-          <button 
-            onClick={() => setActiveTab("jobs")}
-            id="action-card-jobs"
-            className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm text-center flex flex-col items-center justify-center gap-3 transition-all duration-150 hover:-translate-y-1 hover:shadow-md cursor-pointer group"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-650 flex items-center justify-center group-hover:scale-105 transition-transform">
-              <Briefcase className="w-5 h-5 text-indigo-500 fill-indigo-100" />
+          <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <p className="text-[10px] uppercase tracking-wider font-bold text-slate-500">Skill Gap</p>
+                <h4 className="mt-2 text-lg font-bold text-slate-900">{profile?.recommendedCareerSkills?.length ? `${profile.recommendedCareerSkills.length} target skills` : "Build your skills"}</h4>
+              </div>
+              <Target className="w-5 h-5 text-emerald-500" />
             </div>
-            <span className="text-xs font-bold text-slate-700 group-hover:text-indigo-600 transition-colors uppercase tracking-wider">Find Jobs</span>
-          </button>
+            {recommendedSkills && recommendedSkills.length ? (
+              <div className="space-y-3">
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  According to your recommended career, you are currently tracking the following essential skills. Add skill entries to close the gap.
+                </p>
+                <div className="space-y-2">
+                  {recommendedSkills.slice(0, 6).map(skill => (
+                    <div key={skill} className="flex items-center justify-between rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2 text-[11px] text-slate-700">
+                      <span>{skill}</span>
+                      <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold ${skills.some(s => s.name.toLowerCase() === skill.toLowerCase()) ? "bg-emerald-100 text-emerald-700" : "bg-amber-100 text-amber-700"}`}>
+                        {skills.some(s => s.name.toLowerCase() === skill.toLowerCase()) ? "Acquired" : "Missing"}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <p className="text-[11px] text-slate-400">Use the Career Profile tab to define your preferred roles and skills.</p>
+            )}
+          </div>
+
+          <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <p className="text-[10px] uppercase tracking-wider font-bold text-slate-500">Recommended Courses</p>
+                <h4 className="mt-2 text-lg font-bold text-slate-900">{courseLoading ? "Loading..." : recommendedCourses.length ? "Top picks" : "No suggestions"}</h4>
+              </div>
+              <BookOpen className="w-5 h-5 text-sky-500" />
+            </div>
+            {courseLoading ? (
+              <p className="text-xs text-slate-400">Fetching a learning path matched to your career goal.</p>
+            ) : recommendedCourses.length ? (
+              <div className="space-y-3">
+                {recommendedCourses.slice(0, 3).map(course => (
+                  <a key={course.id} href={course.link} target="_blank" rel="noreferrer" className="block rounded-3xl border border-slate-100 bg-slate-50 p-3 transition-all hover:border-slate-200">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-semibold text-slate-900 text-sm">{course.title}</span>
+                      <span className="text-[10px] uppercase tracking-wider text-slate-500">{course.duration}</span>
+                    </div>
+                    <p className="text-[10px] text-slate-500 mt-1">{course.provider} · {course.difficulty}</p>
+                  </a>
+                ))}
+              </div>
+            ) : (
+              <p className="text-[11px] text-slate-400">Update your career profile and skill list to surface more relevant courses.</p>
+            )}
+          </div>
         </div>
       </div>
 

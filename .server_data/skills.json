@@ -473,30 +473,6 @@
   },
   {
     "userId": "admin",
-    "name": "AWS/Cloud Services",
-    "category": "technical",
-    "level": "Advanced",
-    "progress": 30,
-    "id": "rec_1782382226304_vqqyr"
-  },
-  {
-    "userId": "admin",
-    "name": "Docker",
-    "category": "tool",
-    "level": "Advanced",
-    "progress": 30,
-    "id": "rec_1782382233604_8pbfq"
-  },
-  {
-    "userId": "admin",
-    "name": "REST APIs",
-    "category": "technical",
-    "level": "Intermediate",
-    "progress": 30,
-    "id": "rec_1782382238133_zt4by"
-  },
-  {
-    "userId": "admin",
     "name": "TypeScript",
     "category": "language",
     "level": "Beginner",

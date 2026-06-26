@@ -2,3 +2,61 @@ id,userId,title,targetDate,status,skills,milestones
 goal_1,student,Master React.js and Node.js backend,2026-08-15,In Progress,React.js|Node.js,Learn React basics:Completed|Build rich dashboard UI:Completed|Build secure Express backend API:In Progress|Deploy Full-Stack applet:Not Started
 goal_2,student,Get AWS Certified Practitioner,2026-07-20,Not Started,AWS/Cloud Services,Read AWS Whitepapers:Not Started|Take practice exam:Not Started|Schedule certification test:Not Started
 goal_3,student,Complete Technical Personality Mock Interviews,2026-06-12,Completed,Communication,Prepare standard answers:Completed|Do peer-to-peer review mockups:Completed|Refine behavioral questions:Completed
+
+goal_4,user_2,Become a Frontend Developer,2026-09-10,In Progress,React.js|TypeScript|CSS,Learn React Hooks:Completed|Build Portfolio Website:In Progress|Master State Management:Not Started
+goal_5,user_3,Learn Backend Development,2026-10-01,Not Started,Node.js|Express.js|MongoDB,Learn Node.js Basics:Not Started|Create REST APIs:Not Started|Deploy Backend Application:Not Started
+goal_6,user_4,Become a Data Scientist,2026-12-15,In Progress,Python|Pandas|Machine Learning,Complete Python Course:Completed|Learn Data Visualization:Completed|Build ML Project:In Progress|Create Portfolio:Not Started
+goal_7,user_5,Master DevOps Tools,2026-11-30,In Progress,Docker|Kubernetes|CI/CD,Learn Docker Fundamentals:Completed|Create CI/CD Pipeline:In Progress|Deploy Kubernetes Cluster:Not Started
+goal_8,user_6,Get Azure Certification,2026-08-20,Not Started,Azure|Cloud Computing,Study Azure Fundamentals:Not Started|Take Practice Tests:Not Started|Schedule Exam:Not Started
+goal_9,user_7,Build Cybersecurity Skills,2026-09-25,In Progress,Cyber Security|Networking|Linux,Learn Linux Commands:Completed|Study Network Security:In Progress|Complete Security Labs:Not Started
+goal_10,user_8,Become a Mobile App Developer,2026-10-20,Not Started,Flutter|Dart|Firebase,Learn Dart Language:Not Started|Build Flutter App:Not Started|Publish App:Not Started
+goal_11,user_9,Master SQL and Databases,2026-07-30,Completed,SQL|MySQL|PostgreSQL,Learn SQL Queries:Completed|Database Design:Completed|Build Database Project:Completed
+goal_12,user_10,Learn Cloud Architecture,2026-12-01,In Progress,AWS/Cloud Services|Docker|Terraform,AWS Fundamentals:Completed|Learn Infrastructure as Code:In Progress|Deploy Cloud Project:Not Started
+goal_13,user_11,Improve Coding Interview Skills,2026-08-31,In Progress,DSA|Problem Solving,Complete Arrays and Strings:Completed|Practice Trees and Graphs:In Progress|Mock Interviews:Not Started
+goal_14,user_12,Become an AI Engineer,2027-01-15,Not Started,Python|TensorFlow|PyTorch,Learn Deep Learning Basics:Not Started|Build Neural Network Models:Not Started|Complete AI Project:Not Started
+goal_15,user_13,Learn UI/UX Design,2026-09-05,In Progress,Figma|UI/UX Design,Learn Figma Tools:Completed|Create Wireframes:In Progress|Design Complete App UI:Not Started
+goal_16,user_14,Become a Cloud Architect,2027-02-01,Not Started,AWS/Cloud Services|Azure|Google Cloud,Master AWS Services:Not Started|Learn Azure Architecture:Not Started|Design Multi-Cloud Solution:Not Started
+goal_17,user_15,Master Data Engineering,2026-12-20,In Progress,Spark|Hadoop|Data Engineering,Learn Big Data Concepts:Completed|Create ETL Pipeline:In Progress|Deploy Data Lake:Not Started
+goal_18,user_16,Get CompTIA Security+ Certification,2026-08-15,Not Started,Cyber Security,Study Security Fundamentals:Not Started|Take Mock Exams:Not Started|Book Certification Exam:Not Started
+goal_19,user_17,Become a Product Manager,2026-11-10,In Progress,Agile|Product Management,Learn Agile Methodology:Completed|Create Product Roadmap:In Progress|Lead Mock Product Launch:Not Started
+goal_20,user_18,Build Full Stack Portfolio,2026-10-31,In Progress,React.js|Node.js|MongoDB,Create Personal Website:Completed|Develop Full Stack Project:In Progress|Deploy Portfolio:Not Started
+goal_21,user_19,Learn Blockchain Development,2027-01-05,Not Started,Blockchain|Solidity|Ethereum,Study Blockchain Basics:Not Started|Write Smart Contracts:Not Started|Build DApp Project:Not Started
+goal_22,user_20,Master Machine Learning,2026-12-31,In Progress,Machine Learning|Python|Scikit-learn,Complete ML Course:Completed|Build Prediction Model:In Progress|Deploy ML Application:Not Started
+goal_23,user_21,Become a Software Architect,2027-03-15,Not Started,System Design|Microservices|Cloud Computing,Learn Design Patterns:Not Started|Study System Design:Not Started|Architect Enterprise Project:Not Started
+goal_24,user_22,Develop Communication Skills,2026-08-01,Completed,Communication,Join Speaking Sessions:Completed|Practice Presentations:Completed|Receive Feedback:Completed
+goal_25,user_23,Learn Kubernetes Administration,2026-10-15,In Progress,Kubernetes|Docker,Container Basics:Completed|Deploy Kubernetes Cluster:In Progress|Learn Monitoring:Not Started
+goal_26,user_24,Become a QA Automation Engineer,2026-09-20,Not Started,Selenium|JUnit|Automation Testing,Learn Selenium Basics:Not Started|Write Test Scripts:Not Started|Automate Sample Project:Not Started
+goal_27,user_25,Build AI Chatbot Project,2026-11-25,In Progress,Python|NLP|Transformers,Study NLP Concepts:Completed|Train Chatbot Model:In Progress|Deploy Chatbot:Not Started
+goal_28,user_26,Learn Data Visualization,2026-08-18,Completed,Power BI|Tableau,Power BI Basics:Completed|Dashboard Design:Completed|Interactive Reports:Completed
+goal_29,user_27,Master Linux Administration,2026-09-30,In Progress,Linux|Shell Scripting,Linux Fundamentals:Completed|Shell Scripts:In Progress|Server Administration:Not Started
+goal_30,user_28,Become a Generative AI Developer,2027-01-30,Not Started,LLMs|Prompt Engineering|Python,Study LLM Concepts:Not Started|Build AI Assistant:Not Started|Deploy GenAI App:Not Started
+goal_31,user_31,Master React and Next.js,2026-10-20,In Progress,React.js|Next.js|TypeScript,Complete React Advanced Topics:Completed|Build Next.js Project:In Progress|Deploy Production App:Not Started
+goal_32,user_32,Become a Backend Engineer,2026-11-15,Not Started,Java|Spring Boot|MySQL,Learn Spring Boot Basics:Not Started|Build REST API:Not Started|Deploy Backend Service:Not Started
+goal_33,user_33,Earn AWS Solutions Architect Certification,2027-02-20,In Progress,AWS|Cloud Computing|Architecture,Study Core AWS Services:Completed|Practice Architecture Scenarios:In Progress|Take Certification Exam:Not Started
+goal_34,user_34,Build Data Engineering Pipeline,2026-12-10,In Progress,Python|Apache Spark|SQL,Learn ETL Concepts:Completed|Develop Spark Pipeline:In Progress|Deploy Data Warehouse:Not Started
+goal_35,user_35,Become a Cybersecurity Expert,2027-01-25,Not Started,Cyber Security|Ethical Hacking|Linux,Study Ethical Hacking:Not Started|Practice Penetration Testing:Not Started|Earn CEH Certification:Not Started
+goal_36,user_36,Develop Product Management Skills,2026-09-18,In Progress,Product Management|Agile,Learn Agile Framework:Completed|Prepare Product Strategy:In Progress|Launch Sample Product:Not Started
+goal_37,user_37,Master Automation Testing,2026-10-28,In Progress,Selenium|TestNG|Java,Learn Selenium WebDriver:Completed|Create Automation Suite:In Progress|Integrate CI Testing:Not Started
+goal_38,user_38,Build AI Recommendation System,2027-02-10,Not Started,Python|Machine Learning|TensorFlow,Study Recommendation Algorithms:Not Started|Train AI Model:Not Started|Deploy Recommendation API:Not Started
+goal_39,user_39,Learn Business Intelligence,2026-09-05,Completed,Power BI|SQL|Tableau,Learn Power BI:Completed|Build Dashboard:Completed|Present Business Insights:Completed
+goal_40,user_40,Become a Blockchain Engineer,2027-03-01,Not Started,Blockchain|Ethereum|Solidity,Study Blockchain Architecture:Not Started|Develop Smart Contracts:Not Started|Deploy Decentralized App:Not Started
+goal_41,user_41,Master Frontend Frameworks,2026-11-05,In Progress,React.js|Vue.js|Angular,Complete React Course:Completed|Learn Vue.js:In Progress|Build Angular Project:Not Started
+goal_42,user_42,Design Scalable Microservices,2027-01-15,Not Started,Spring Boot|Docker|Microservices,Learn Microservice Patterns:Not Started|Develop Services:Not Started|Deploy with Docker:Not Started
+goal_43,user_43,Become an ML Engineer,2026-12-18,In Progress,Python|Scikit-learn|TensorFlow,Study Machine Learning Algorithms:Completed|Train ML Models:In Progress|Deploy ML API:Not Started
+goal_44,user_44,Master Kubernetes,2026-10-25,In Progress,Kubernetes|Docker|Helm,Learn Kubernetes Basics:Completed|Deploy Cluster:In Progress|Configure Monitoring:Not Started
+goal_45,user_45,Develop Android Applications,2026-11-22,Not Started,Kotlin|Android|Firebase,Learn Kotlin:Not Started|Build Android App:Not Started|Publish on Play Store:Not Started
+goal_46,user_46,Earn Cyber Security Certification,2027-02-12,Not Started,Cyber Security|Networking|Linux,Study Security Concepts:Not Started|Practice Labs:Not Started|Take Certification Exam:Not Started
+goal_47,user_47,Build Deep Learning Projects,2027-01-05,In Progress,TensorFlow|PyTorch|Python,Learn CNN Models:Completed|Develop Image Classifier:In Progress|Deploy AI Application:Not Started
+goal_48,user_48,Learn Multi-Cloud Deployment,2026-12-28,In Progress,AWS|Azure|Google Cloud,Complete AWS Labs:Completed|Deploy Azure Resources:In Progress|Configure Google Cloud:Not Started
+goal_49,user_49,Create Full Stack Portfolio,2026-10-12,Completed,React.js|Node.js|MongoDB,Develop Portfolio Website:Completed|Add Full Stack Projects:Completed|Deploy Online:Completed
+goal_50,user_50,Become a Big Data Engineer,2027-03-10,Not Started,Hadoop|Spark|Kafka,Study Hadoop Ecosystem:Not Started|Build Spark Jobs:Not Started|Deploy Data Pipeline:Not Started
+goal_51,user_51,Master Artificial Intelligence,2027-04-01,In Progress,AI|Python|Deep Learning,Study AI Fundamentals:Completed|Build AI Model:In Progress|Deploy AI Solution:Not Started
+goal_52,user_52,Improve Leadership Skills,2026-09-30,Completed,Leadership|Communication,Attend Leadership Workshop:Completed|Lead Team Project:Completed|Receive Feedback:Completed
+goal_53,user_53,Learn Automation Frameworks,2026-11-18,In Progress,Selenium|JUnit|Maven,Study Selenium Framework:Completed|Develop Automation Tests:In Progress|Integrate Jenkins:Not Started
+goal_54,user_54,Design Modern UI UX,2026-10-15,In Progress,Figma|UI/UX Design,Learn Design Systems:Completed|Design Mobile UI:In Progress|Prototype Complete Product:Not Started
+goal_55,user_55,Become a Network Security Engineer,2027-01-18,Not Started,Networking|Firewalls|Cyber Security,Study Network Protocols:Not Started|Configure Firewalls:Not Started|Secure Enterprise Network:Not Started
+goal_56,user_56,Build Enterprise Web Applications,2026-12-08,In Progress,React.js|Spring Boot|MySQL,Develop Frontend:Completed|Build Backend APIs:In Progress|Deploy Enterprise App:Not Started
+goal_57,user_57,Master Cloud Security,2027-02-25,Not Started,AWS|IAM|Cloud Security,Study IAM Policies:Not Started|Implement Cloud Security:Not Started|Complete Security Audit:Not Started
+goal_58,user_58,Develop Embedded Systems,2026-11-12,In Progress,Embedded C|ARM|RTOS,Learn ARM Programming:Completed|Develop Firmware:In Progress|Test Embedded Device:Not Started
+goal_59,user_59,Build IoT Smart Home System,2027-01-08,Not Started,IoT|Arduino|MQTT,Learn IoT Basics:Not Started|Develop Smart Sensors:Not Started|Deploy Smart Home Project:Not Started
+goal_60,user_60,Become a Software Architect,2027-05-15,In Progress,System Design|Microservices|Cloud Computing,Study Design Patterns:Completed|Design Distributed System:In Progress|Lead Architecture Review:Not Started

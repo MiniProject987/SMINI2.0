@@ -2,3 +2,199 @@ id,userId,type,score,answers,recommendations,createdAt
 assess_riasec_1,student,RIASEC,85,Realistic:4|Investigative:5|Artistic:3|Social:2|Enterprising:3|Conventional:2,Great fit for analytical technical roles such as Full-Stack Development and Data Science. Develop Investigative projects.,2026-06-08T12:00:00Z
 assess_aptitude_1,student,Aptitude,78,Logical:80|Quantitative:75|Verbal:80,Enhance data structures and algorithms practice. Focus on time-boxed quantitative problem solving.,2026-06-08T14:30:00Z
 assess_personality_1,student,Personality,90,Openness:85|Conscientiousness:90|Extraversion:60|Agreeableness:80|Neuroticism:30,Thrives in remote self-directed environments. Excellent team player in modern collaborative workspaces.,2026-06-09T09:12:00Z
+
+assess_riasec_2,student,RIASEC,88,Realistic:3|Investigative:5|Artistic:4|Social:3|Enterprising:2|Conventional:2,Strong analytical and creative thinking. Suitable for AI Engineering and Software Development roles.,2026-06-10T10:15:00Z
+assess_riasec_3,student,RIASEC,82,Realistic:2|Investigative:4|Artistic:5|Social:3|Enterprising:3|Conventional:2,Consider UI/UX Design and Frontend Development. Build creative portfolio projects.,2026-06-11T11:20:00Z
+assess_riasec_4,student,RIASEC,91,Realistic:4|Investigative:5|Artistic:2|Social:2|Enterprising:4|Conventional:3,Excellent fit for Cybersecurity and Cloud Engineering. Gain industry certifications.,2026-06-12T08:45:00Z
+
+assess_aptitude_2,student,Aptitude,84,Logical:90|Quantitative:82|Verbal:80,Strong reasoning ability. Focus on competitive coding and advanced algorithms.,2026-06-10T13:10:00Z
+assess_aptitude_3,student,Aptitude,72,Logical:70|Quantitative:68|Verbal:78,Improve quantitative aptitude through daily practice. Strengthen problem-solving speed.,2026-06-11T15:30:00Z
+assess_aptitude_4,student,Aptitude,89,Logical:92|Quantitative:88|Verbal:87,Excellent aptitude profile. Suitable for software engineering and technical interviews.,2026-06-12T16:05:00Z
+
+assess_personality_2,student,Personality,87,Openness:88|Conscientiousness:85|Extraversion:70|Agreeableness:78|Neuroticism:25,Adaptable and innovative. Well-suited for agile development teams and leadership roles.,2026-06-10T09:25:00Z
+assess_personality_3,student,Personality,81,Openness:75|Conscientiousness:88|Extraversion:55|Agreeableness:82|Neuroticism:35,Highly dependable and detail-oriented. Suitable for QA Engineering and Project Coordination.,2026-06-11T12:40:00Z
+assess_personality_4,student,Personality,93,Openness:92|Conscientiousness:91|Extraversion:75|Agreeableness:85|Neuroticism:20,Excellent leadership and collaboration skills. Explore Product Management and Technical Lead paths.,2026-06-12T14:50:00Z
+
+assess_riasec_5,user2,RIASEC,79,Realistic:3|Investigative:4|Artistic:3|Social:4|Enterprising:3|Conventional:2,Strong balance of technical and interpersonal skills. Consider Business Analytics.,2026-06-13T10:00:00Z
+assess_aptitude_5,user2,Aptitude,76,Logical:78|Quantitative:72|Verbal:79,Practice coding challenges and improve numerical reasoning.,2026-06-13T10:30:00Z
+assess_personality_5,user2,Personality,86,Openness:82|Conscientiousness:89|Extraversion:68|Agreeableness:81|Neuroticism:28,Performs well in collaborative environments. Suitable for consulting and analyst roles.,2026-06-13T11:00:00Z
+
+assess_riasec_6,user3,RIASEC,94,Realistic:4|Investigative:5|Artistic:3|Social:2|Enterprising:4|Conventional:2,Outstanding fit for Machine Learning, AI Research, and Data Science careers.,2026-06-14T08:15:00Z
+assess_aptitude_6,user3,Aptitude,92,Logical:95|Quantitative:91|Verbal:90,Excellent aptitude. Target top-tier technical roles and competitive placements.,2026-06-14T08:45:00Z
+assess_personality_6,user3,Personality,95,Openness:95|Conscientiousness:93|Extraversion:72|Agreeableness:88|Neuroticism:15,Strong leadership potential with high creativity and discipline. Ideal for innovation-driven careers.,2026-06-14T09:10:00Z
+
+assess_riasec_7,user4,RIASEC,83,Realistic:3|Investigative:4|Artistic:4|Social:3|Enterprising:3|Conventional:2,Well suited for Frontend Development and UI/UX. Build creative web applications.,2026-06-15T09:00:00Z
+assess_aptitude_7,user4,Aptitude,81,Logical:84|Quantitative:79|Verbal:80,Continue practicing coding challenges and improve quantitative reasoning.,2026-06-15T09:30:00Z
+assess_personality_7,user4,Personality,88,Openness:86|Conscientiousness:89|Extraversion:70|Agreeableness:84|Neuroticism:24,Strong collaborative mindset. Suitable for Agile software teams.,2026-06-15T10:00:00Z
+
+assess_riasec_8,user5,RIASEC,90,Realistic:4|Investigative:5|Artistic:2|Social:3|Enterprising:4|Conventional:3,Excellent fit for Cloud Engineering and DevOps careers.,2026-06-16T10:20:00Z
+assess_aptitude_8,user5,Aptitude,86,Logical:88|Quantitative:84|Verbal:86,Strong analytical ability. Focus on advanced DSA and system design.,2026-06-16T10:45:00Z
+assess_personality_8,user5,Personality,91,Openness:90|Conscientiousness:92|Extraversion:73|Agreeableness:86|Neuroticism:18,Highly dependable with leadership potential. Suitable for technical leadership roles.,2026-06-16T11:15:00Z
+
+assess_riasec_9,user6,RIASEC,78,Realistic:2|Investigative:4|Artistic:5|Social:4|Enterprising:3|Conventional:2,Creative thinker. Explore UI/UX Design and Product Design careers.,2026-06-17T08:30:00Z
+assess_aptitude_9,user6,Aptitude,74,Logical:76|Quantitative:70|Verbal:76,Improve numerical aptitude and continue practicing logical reasoning.,2026-06-17T09:00:00Z
+assess_personality_9,user6,Personality,84,Openness:83|Conscientiousness:85|Extraversion:66|Agreeableness:82|Neuroticism:29,Performs well in collaborative environments. Continue improving communication skills.,2026-06-17T09:30:00Z
+
+assess_riasec_10,user7,RIASEC,92,Realistic:4|Investigative:5|Artistic:3|Social:2|Enterprising:4|Conventional:3,Outstanding match for AI Engineering, Machine Learning, and Data Science careers.,2026-06-18T10:00:00Z
+assess_aptitude_10,user7,Aptitude,90,Logical:94|Quantitative:88|Verbal:89,Excellent analytical skills. Continue solving advanced DSA and competitive programming problems.,2026-06-18T10:30:00Z
+assess_personality_10,user7,Personality,94,Openness:93|Conscientiousness:95|Extraversion:74|Agreeableness:87|Neuroticism:16,Excellent leadership qualities. Suitable for AI research and engineering leadership roles.,2026-06-18T11:00:00Z
+
+assess_riasec_11,user8,RIASEC,81,Realistic:3|Investigative:4|Artistic:4|Social:4|Enterprising:3|Conventional:2,Good combination of analytical and social skills. Explore Data Analytics and Business Intelligence.,2026-06-19T09:15:00Z
+assess_aptitude_11,user8,Aptitude,79,Logical:81|Quantitative:77|Verbal:79,Strengthen quantitative aptitude and database problem solving.,2026-06-19T09:45:00Z
+assess_personality_11,user8,Personality,86,Openness:84|Conscientiousness:88|Extraversion:69|Agreeableness:83|Neuroticism:27,Strong organizational skills. Suitable for Business Analyst and Data Analyst roles.,2026-06-19T10:15:00Z
+
+assess_riasec_12,user9,RIASEC,89,Realistic:4|Investigative:5|Artistic:3|Social:3|Enterprising:4|Conventional:2,Excellent fit for Full Stack Development and Software Engineering. Build production-ready projects.,2026-06-20T08:30:00Z
+assess_aptitude_12,user9,Aptitude,87,Logical:89|Quantitative:86|Verbal:86,Very good aptitude. Continue practicing coding interviews and system design.,2026-06-20T09:00:00Z
+assess_personality_12,user9,Personality,90,Openness:89|Conscientiousness:91|Extraversion:71|Agreeableness:85|Neuroticism:20,Reliable and adaptable. Well suited for software engineering and collaborative development teams.,2026-06-20T09:30:00Z
+
+assess_riasec_13,user10,RIASEC,84,Realistic:3|Investigative:4|Artistic:3|Social:4|Enterprising:4|Conventional:3,Strong interpersonal and technical skills. Suitable for Product Management and Technical Consulting.,2026-06-21T10:00:00Z
+assess_aptitude_13,user10,Aptitude,82,Logical:84|Quantitative:80|Verbal:82,Good aptitude profile. Improve algorithm optimization and numerical reasoning.,2026-06-21T10:30:00Z
+assess_personality_13,user10,Personality,88,Openness:87|Conscientiousness:90|Extraversion:72|Agreeableness:84|Neuroticism:22,Excellent communication and leadership potential. Suitable for Product Management and Technical Consulting.,2026-06-21T11:00:00Z
+
+assess_riasec_14,user11,RIASEC,87,Realistic:4|Investigative:4|Artistic:3|Social:3|Enterprising:4|Conventional:3,Strong software engineering mindset. Explore Backend Development and Cloud Engineering.,2026-06-22T09:00:00Z
+assess_aptitude_14,user11,Aptitude,85,Logical:87|Quantitative:84|Verbal:84,Very good aptitude. Practice system design and advanced programming challenges.,2026-06-22T09:30:00Z
+assess_personality_14,user11,Personality,91,Openness:90|Conscientiousness:92|Extraversion:74|Agreeableness:86|Neuroticism:18,Highly dependable with excellent teamwork skills. Suitable for senior engineering roles.,2026-06-22T10:00:00Z
+
+assess_riasec_15,user12,RIASEC,80,Realistic:3|Investigative:4|Artistic:4|Social:4|Enterprising:3|Conventional:2,Creative and analytical. Consider Data Visualization and Frontend Development careers.,2026-06-23T08:45:00Z
+assess_aptitude_15,user12,Aptitude,77,Logical:79|Quantitative:75|Verbal:77,Improve coding speed and mathematical reasoning through regular practice.,2026-06-23T09:15:00Z
+assess_personality_15,user12,Personality,85,Openness:84|Conscientiousness:86|Extraversion:68|Agreeableness:83|Neuroticism:26,Performs well in collaborative environments. Continue developing leadership skills.,2026-06-23T09:45:00Z
+
+assess_riasec_16,user13,RIASEC,93,Realistic:4|Investigative:5|Artistic:3|Social:2|Enterprising:4|Conventional:3,Excellent fit for Artificial Intelligence, Machine Learning, and Data Engineering careers.,2026-06-24T10:00:00Z
+assess_aptitude_16,user13,Aptitude,91,Logical:94|Quantitative:90|Verbal:89,Outstanding analytical ability. Prepare for top software engineering interviews and coding competitions.,2026-06-24T10:30:00Z
+assess_personality_16,user13,Personality,94,Openness:95|Conscientiousness:93|Extraversion:76|Agreeableness:88|Neuroticism:15,Strong innovation mindset and leadership potential. Ideal for AI research and technical leadership positions.,2026-06-24T11:00:00Z
+
+assess_riasec_17,user14,RIASEC,86,Realistic:4|Investigative:4|Artistic:3|Social:3|Enterprising:4|Conventional:3,Strong fit for Cloud Computing and Backend Development. Build scalable cloud-based applications.,2026-06-25T09:00:00Z
+assess_aptitude_17,user14,Aptitude,84,Logical:86|Quantitative:83|Verbal:83,Good logical reasoning. Improve algorithm optimization and coding interview performance.,2026-06-25T09:30:00Z
+assess_personality_17,user14,Personality,89,Openness:88|Conscientiousness:90|Extraversion:71|Agreeableness:85|Neuroticism:21,Reliable and adaptable. Well suited for DevOps and Cloud Engineering teams.,2026-06-25T10:00:00Z
+
+assess_riasec_18,user15,RIASEC,82,Realistic:3|Investigative:4|Artistic:4|Social:4|Enterprising:3|Conventional:2,Creative and analytical profile. Suitable for UI/UX Design and Product Design careers.,2026-06-26T08:30:00Z
+assess_aptitude_18,user15,Aptitude,79,Logical:80|Quantitative:78|Verbal:79,Strengthen quantitative aptitude and continue practicing technical interview questions.,2026-06-26T09:00:00Z
+assess_personality_18,user15,Personality,87,Openness:86|Conscientiousness:88|Extraversion:69|Agreeableness:84|Neuroticism:24,Strong communication and collaboration skills. Excellent for cross-functional product teams.,2026-06-26T09:30:00Z
+
+assess_riasec_19,user16,RIASEC,91,Realistic:4|Investigative:5|Artistic:3|Social:2|Enterprising:4|Conventional:3,Excellent profile for Cybersecurity, AI Engineering, and Data Science. Pursue advanced certifications.,2026-06-27T10:00:00Z
+assess_aptitude_19,user16,Aptitude,90,Logical:93|Quantitative:89|Verbal:88,Excellent aptitude. Continue competitive programming and system design preparation.,2026-06-27T10:30:00Z
+assess_personality_19,user16,Personality,93,Openness:94|Conscientiousness:92|Extraversion:74|Agreeableness:87|Neuroticism:17,Outstanding leadership and problem-solving abilities. Suitable for senior technical roles.,2026-06-27T11:00:00Z
+
+assess_riasec_20,user17,RIASEC,85,Realistic:3|Investigative:5|Artistic:3|Social:3|Enterprising:4|Conventional:2,Strong investigative mindset. Recommended career paths include Software Engineering, AI, and Data Analytics.,2026-06-28T09:00:00Z
+assess_aptitude_20,user17,Aptitude,88,Logical:90|Quantitative:87|Verbal:87,Excellent aptitude. Focus on advanced algorithms and mock coding interviews.,2026-06-28T09:30:00Z
+assess_personality_20,user17,Personality,92,Openness:91|Conscientiousness:93|Extraversion:73|Agreeableness:87|Neuroticism:18,Strong leadership and collaboration skills. Well suited for software engineering and product development.,2026-06-28T10:00:00Z
+
+assess_riasec_21,user18,RIASEC,84,Realistic:3|Investigative:5|Artistic:3|Social:3|Enterprising:4|Conventional:2,Excellent match for Backend Development and Cloud Engineering.,2026-06-29T09:00:00Z
+assess_aptitude_21,user18,Aptitude,82,Logical:84|Quantitative:81|Verbal:81,Practice competitive programming and database optimization.,2026-06-29T09:30:00Z
+assess_personality_21,user18,Personality,88,Openness:87|Conscientiousness:90|Extraversion:70|Agreeableness:84|Neuroticism:22,Reliable and disciplined. Suitable for DevOps and Cloud roles.,2026-06-29T10:00:00Z
+
+assess_riasec_22,user19,RIASEC,90,Realistic:4|Investigative:5|Artistic:2|Social:3|Enterprising:4|Conventional:3,Outstanding fit for AI Engineering and Machine Learning careers.,2026-06-30T09:00:00Z
+assess_aptitude_22,user19,Aptitude,91,Logical:94|Quantitative:90|Verbal:89,Excellent analytical thinking. Continue solving advanced coding problems.,2026-06-30T09:30:00Z
+assess_personality_22,user19,Personality,94,Openness:95|Conscientiousness:94|Extraversion:75|Agreeableness:88|Neuroticism:15,High innovation and leadership potential. Suitable for technical lead positions.,2026-06-30T10:00:00Z
+
+assess_riasec_23,user20,RIASEC,79,Realistic:3|Investigative:4|Artistic:4|Social:4|Enterprising:3|Conventional:2,Creative and people-oriented. Explore UI/UX and Product Design.,2026-07-01T09:00:00Z
+assess_aptitude_23,user20,Aptitude,76,Logical:78|Quantitative:74|Verbal:76,Improve quantitative aptitude and coding speed.,2026-07-01T09:30:00Z
+assess_personality_23,user20,Personality,85,Openness:84|Conscientiousness:86|Extraversion:69|Agreeableness:82|Neuroticism:27,Good collaboration skills. Suitable for design and analyst roles.,2026-07-01T10:00:00Z
+
+assess_riasec_24,user21,RIASEC,92,Realistic:4|Investigative:5|Artistic:3|Social:2|Enterprising:4|Conventional:3,Ideal for Cybersecurity and Data Engineering. Build advanced security projects.,2026-07-02T09:00:00Z
+assess_aptitude_24,user21,Aptitude,90,Logical:93|Quantitative:89|Verbal:88,Excellent aptitude. Prepare for product-based company interviews.,2026-07-02T09:30:00Z
+assess_personality_24,user21,Personality,93,Openness:94|Conscientiousness:92|Extraversion:74|Agreeableness:87|Neuroticism:17,Strong technical leadership qualities and excellent teamwork.,2026-07-02T10:00:00Z
+
+assess_riasec_25,user22,RIASEC,81,Realistic:3|Investigative:4|Artistic:5|Social:3|Enterprising:3|Conventional:2,Creative profile. Explore Frontend Development and UI Design.,2026-07-03T09:00:00Z
+assess_aptitude_25,user22,Aptitude,80,Logical:82|Quantitative:79|Verbal:80,Practice aptitude tests regularly and strengthen coding fundamentals.,2026-07-03T09:30:00Z
+assess_personality_25,user22,Personality,87,Openness:88|Conscientiousness:87|Extraversion:71|Agreeableness:84|Neuroticism:23,Creative and dependable. Well suited for frontend and design teams.,2026-07-03T10:00:00Z
+
+assess_riasec_26,user23,RIASEC,89,Realistic:4|Investigative:5|Artistic:3|Social:3|Enterprising:4|Conventional:2,Strong analytical profile. Recommended for AI, Software Engineering, and Data Science.,2026-07-04T09:00:00Z
+assess_aptitude_26,user23,Aptitude,89,Logical:91|Quantitative:88|Verbal:88,Excellent aptitude. Continue solving real-world software engineering problems.,2026-07-04T09:30:00Z
+assess_personality_26,user23,Personality,91,Openness:92|Conscientiousness:91|Extraversion:73|Agreeableness:86|Neuroticism:19,Highly motivated with leadership potential. Suitable for senior software engineering roles.,2026-07-04T10:00:00Z
+
+assess_riasec_27,user24,RIASEC,86,Realistic:4|Investigative:4|Artistic:3|Social:3|Enterprising:4|Conventional:3,Strong profile for Cloud Computing and DevOps careers. Focus on cloud certifications.,2026-07-05T09:00:00Z
+assess_aptitude_27,user24,Aptitude,85,Logical:87|Quantitative:84|Verbal:84,Excellent reasoning skills. Continue practicing coding interview questions.,2026-07-05T09:30:00Z
+assess_personality_27,user24,Personality,90,Openness:91|Conscientiousness:90|Extraversion:72|Agreeableness:86|Neuroticism:19,Excellent team player with leadership qualities. Suitable for DevOps and Cloud teams.,2026-07-05T10:00:00Z
+
+assess_riasec_28,user25,RIASEC,80,Realistic:3|Investigative:4|Artistic:5|Social:3|Enterprising:3|Conventional:2,Creative mindset. Consider UI/UX Design and Frontend Development.,2026-07-06T09:00:00Z
+assess_aptitude_28,user25,Aptitude,78,Logical:80|Quantitative:76|Verbal:78,Improve quantitative reasoning and continue practicing algorithms.,2026-07-06T09:30:00Z
+assess_personality_28,user25,Personality,86,Openness:87|Conscientiousness:86|Extraversion:69|Agreeableness:84|Neuroticism:24,Creative and dependable. Suitable for UI/UX and Product Design teams.,2026-07-06T10:00:00Z
+
+assess_riasec_29,user26,RIASEC,91,Realistic:4|Investigative:5|Artistic:3|Social:2|Enterprising:4|Conventional:3,Outstanding fit for Machine Learning and Artificial Intelligence careers.,2026-07-07T09:00:00Z
+assess_aptitude_29,user26,Aptitude,92,Logical:95|Quantitative:91|Verbal:90,Outstanding aptitude. Prepare for advanced software engineering interviews.,2026-07-07T09:30:00Z
+assess_personality_29,user26,Personality,94,Openness:95|Conscientiousness:94|Extraversion:75|Agreeableness:88|Neuroticism:15,Strong innovation and leadership skills. Excellent for AI research roles.,2026-07-07T10:00:00Z
+
+assess_riasec_30,user27,RIASEC,83,Realistic:3|Investigative:4|Artistic:4|Social:4|Enterprising:3|Conventional:2,Balanced technical and interpersonal profile. Explore Business Analytics and Data Science.,2026-07-08T09:00:00Z
+assess_aptitude_30,user27,Aptitude,81,Logical:83|Quantitative:80|Verbal:81,Good aptitude. Continue practicing SQL and problem-solving.,2026-07-08T09:30:00Z
+assess_personality_30,user27,Personality,88,Openness:88|Conscientiousness:89|Extraversion:71|Agreeableness:85|Neuroticism:21,Well suited for analyst and software engineering roles.,2026-07-08T10:00:00Z
+
+assess_riasec_31,user28,RIASEC,88,Realistic:4|Investigative:5|Artistic:2|Social:3|Enterprising:4|Conventional:3,Excellent match for Backend Development and Cloud Architecture.,2026-07-09T09:00:00Z
+assess_aptitude_31,user28,Aptitude,87,Logical:89|Quantitative:86|Verbal:86,Very strong aptitude. Focus on system design and cloud technologies.,2026-07-09T09:30:00Z
+assess_personality_31,user28,Personality,92,Openness:93|Conscientiousness:92|Extraversion:73|Agreeableness:87|Neuroticism:17,Highly dependable and technically strong. Suitable for senior engineering positions.,2026-07-09T10:00:00Z
+
+assess_riasec_32,user29,RIASEC,82,Realistic:3|Investigative:4|Artistic:4|Social:4|Enterprising:3|Conventional:2,Creative and analytical. Explore Product Management and UX Research.,2026-07-10T09:00:00Z
+assess_aptitude_32,user29,Aptitude,79,Logical:81|Quantitative:77|Verbal:79,Continue improving mathematical reasoning and coding consistency.,2026-07-10T09:30:00Z
+assess_personality_32,user29,Personality,87,Openness:88|Conscientiousness:88|Extraversion:70|Agreeableness:84|Neuroticism:22,Strong communication skills. Suitable for cross-functional software teams.,2026-07-10T10:00:00Z
+
+assess_riasec_33,user30,RIASEC,90,Realistic:4|Investigative:5|Artistic:3|Social:2|Enterprising:4|Conventional:3,Excellent fit for AI Engineering, Data Engineering, and Software Development.,2026-07-11T09:00:00Z
+assess_aptitude_33,user30,Aptitude,91,Logical:94|Quantitative:90|Verbal:89,Excellent aptitude. Continue preparing for product-based company interviews.,2026-07-11T09:30:00Z
+assess_personality_33,user30,Personality,93,Openness:94|Conscientiousness:93|Extraversion:74|Agreeableness:87|Neuroticism:16,Highly disciplined and innovative. Suitable for AI Engineering and technical leadership roles.,2026-07-11T10:00:00Z
+
+assess_riasec_34,user31,RIASEC,84,Realistic:3|Investigative:5|Artistic:3|Social:3|Enterprising:4|Conventional:2,Strong analytical mindset. Recommended for Backend Development and Cloud Engineering.,2026-07-12T09:00:00Z
+assess_aptitude_34,user31,Aptitude,83,Logical:85|Quantitative:82|Verbal:82,Continue strengthening DSA and SQL problem-solving skills.,2026-07-12T09:30:00Z
+assess_personality_34,user31,Personality,89,Openness:90|Conscientiousness:90|Extraversion:71|Agreeableness:85|Neuroticism:20,Consistent performer with good collaboration skills. Suitable for software engineering teams.,2026-07-12T10:00:00Z
+
+assess_riasec_35,user32,RIASEC,91,Realistic:4|Investigative:5|Artistic:2|Social:3|Enterprising:4|Conventional:3,Excellent fit for AI, Machine Learning, and Data Science careers.,2026-07-13T09:00:00Z
+assess_aptitude_35,user32,Aptitude,90,Logical:93|Quantitative:89|Verbal:88,Outstanding aptitude. Focus on advanced algorithms and competitive programming.,2026-07-13T09:30:00Z
+assess_personality_35,user32,Personality,94,Openness:95|Conscientiousness:94|Extraversion:75|Agreeableness:88|Neuroticism:15,Excellent leadership and innovation potential. Suitable for research-oriented technical roles.,2026-07-13T10:00:00Z
+
+assess_riasec_36,user33,RIASEC,80,Realistic:3|Investigative:4|Artistic:5|Social:4|Enterprising:3|Conventional:2,Creative and people-oriented. Explore UI/UX and Product Design careers.,2026-07-14T09:00:00Z
+assess_aptitude_36,user33,Aptitude,78,Logical:80|Quantitative:76|Verbal:78,Improve coding speed and continue aptitude practice.,2026-07-14T09:30:00Z
+assess_personality_36,user33,Personality,86,Openness:87|Conscientiousness:87|Extraversion:69|Agreeableness:84|Neuroticism:23,Creative and dependable. Suitable for design-focused software teams.,2026-07-14T10:00:00Z
+
+assess_riasec_37,user34,RIASEC,89,Realistic:4|Investigative:5|Artistic:3|Social:2|Enterprising:4|Conventional:3,Strong match for Cybersecurity and Cloud Computing careers.,2026-07-15T09:00:00Z
+assess_aptitude_37,user34,Aptitude,88,Logical:90|Quantitative:87|Verbal:87,Very strong reasoning skills. Prepare for system design interviews.,2026-07-15T09:30:00Z
+assess_personality_37,user34,Personality,92,Openness:93|Conscientiousness:92|Extraversion:73|Agreeableness:87|Neuroticism:17,Excellent technical leadership potential. Suitable for cloud and security roles.,2026-07-15T10:00:00Z
+
+assess_riasec_38,user35,RIASEC,83,Realistic:3|Investigative:4|Artistic:4|Social:4|Enterprising:3|Conventional:2,Balanced profile. Explore Business Intelligence and Data Analytics careers.,2026-07-16T09:00:00Z
+assess_aptitude_38,user35,Aptitude,81,Logical:83|Quantitative:80|Verbal:81,Good analytical ability. Continue SQL and Python practice.,2026-07-16T09:30:00Z
+assess_personality_38,user35,Personality,88,Openness:89|Conscientiousness:89|Extraversion:71|Agreeableness:85|Neuroticism:20,Strong teamwork and communication skills. Suitable for analyst and consulting roles.,2026-07-16T10:00:00Z
+
+assess_riasec_39,user36,RIASEC,92,Realistic:4|Investigative:5|Artistic:3|Social:2|Enterprising:4|Conventional:3,Outstanding profile for Artificial Intelligence and Software Engineering careers.,2026-07-17T09:00:00Z
+assess_aptitude_39,user36,Aptitude,91,Logical:94|Quantitative:90|Verbal:89,Excellent aptitude. Continue solving real-world software engineering problems.,2026-07-17T09:30:00Z
+assess_personality_39,user36,Personality,94,Openness:95|Conscientiousness:94|Extraversion:75|Agreeableness:88|Neuroticism:15,Excellent leadership and innovation skills. Ideal for AI and research-oriented technical roles.,2026-07-17T10:00:00Z
+
+assess_riasec_40,user37,RIASEC,85,Realistic:4|Investigative:4|Artistic:3|Social:3|Enterprising:4|Conventional:3,Strong fit for Full Stack Development and Cloud Engineering.,2026-07-18T09:00:00Z
+assess_aptitude_40,user37,Aptitude,84,Logical:86|Quantitative:83|Verbal:83,Good problem-solving skills. Continue practicing coding interviews.,2026-07-18T09:30:00Z
+assess_personality_40,user37,Personality,90,Openness:90|Conscientiousness:91|Extraversion:72|Agreeableness:86|Neuroticism:19,Reliable and adaptable. Suitable for software engineering teams.,2026-07-18T10:00:00Z
+
+assess_riasec_41,user38,RIASEC,88,Realistic:4|Investigative:5|Artistic:2|Social:3|Enterprising:4|Conventional:3,Excellent fit for DevOps and Cloud Architecture careers.,2026-07-19T09:00:00Z
+assess_aptitude_41,user38,Aptitude,87,Logical:89|Quantitative:86|Verbal:86,Excellent aptitude. Focus on system design and cloud technologies.,2026-07-19T09:30:00Z
+assess_personality_41,user38,Personality,92,Openness:93|Conscientiousness:92|Extraversion:74|Agreeableness:87|Neuroticism:17,Strong technical leadership potential with excellent collaboration skills.,2026-07-19T10:00:00Z
+
+assess_riasec_42,user39,RIASEC,81,Realistic:3|Investigative:4|Artistic:5|Social:4|Enterprising:3|Conventional:2,Creative and analytical. Explore UI/UX Design and Product Management.,2026-07-20T09:00:00Z
+assess_aptitude_42,user39,Aptitude,79,Logical:81|Quantitative:78|Verbal:78,Improve numerical reasoning and continue solving coding problems.,2026-07-20T09:30:00Z
+assess_personality_42,user39,Personality,87,Openness:88|Conscientiousness:88|Extraversion:70|Agreeableness:84|Neuroticism:22,Creative and dependable. Suitable for product and design teams.,2026-07-20T10:00:00Z
+
+assess_riasec_43,user40,RIASEC,93,Realistic:4|Investigative:5|Artistic:3|Social:2|Enterprising:4|Conventional:3,Outstanding profile for Artificial Intelligence and Machine Learning careers.,2026-07-21T09:00:00Z
+assess_aptitude_43,user40,Aptitude,92,Logical:95|Quantitative:91|Verbal:90,Excellent aptitude. Prepare for advanced technical interviews.,2026-07-21T09:30:00Z
+assess_personality_43,user40,Personality,95,Openness:96|Conscientiousness:95|Extraversion:76|Agreeableness:89|Neuroticism:14,Exceptional leadership and innovation potential. Suitable for AI research roles.,2026-07-21T10:00:00Z
+
+assess_riasec_44,user41,RIASEC,82,Realistic:3|Investigative:4|Artistic:4|Social:4|Enterprising:3|Conventional:2,Balanced technical and creative profile. Consider Business Analytics and Data Visualization.,2026-07-22T09:00:00Z
+assess_aptitude_44,user41,Aptitude,80,Logical:82|Quantitative:79|Verbal:79,Good reasoning skills. Improve coding consistency and SQL knowledge.,2026-07-22T09:30:00Z
+assess_personality_44,user41,Personality,88,Openness:89|Conscientiousness:89|Extraversion:71|Agreeableness:85|Neuroticism:21,Strong communication and teamwork skills. Suitable for analyst roles.,2026-07-22T10:00:00Z
+
+assess_riasec_45,user42,RIASEC,90,Realistic:4|Investigative:5|Artistic:3|Social:2|Enterprising:4|Conventional:3,Excellent profile for Software Engineering and Cybersecurity careers.,2026-07-23T09:00:00Z
+assess_aptitude_45,user42,Aptitude,89,Logical:91|Quantitative:88|Verbal:88,Excellent aptitude. Continue practicing algorithms and system design.,2026-07-23T09:30:00Z
+assess_personality_45,user42,Personality,93,Openness:94|Conscientiousness:93|Extraversion:74|Agreeableness:88|Neuroticism:16,Highly disciplined with leadership qualities. Suitable for senior engineering roles.,2026-07-23T10:00:00Z
+
+assess_riasec_46,user43,RIASEC,84,Realistic:4|Investigative:4|Artistic:3|Social:3|Enterprising:4|Conventional:3,Strong profile for Backend Development and DevOps.,2026-07-24T09:00:00Z
+assess_aptitude_46,user43,Aptitude,85,Logical:87|Quantitative:84|Verbal:84,Continue improving coding speed and algorithmic thinking.,2026-07-24T09:30:00Z
+assess_personality_46,user43,Personality,90,Openness:91|Conscientiousness:91|Extraversion:72|Agreeableness:86|Neuroticism:18,Excellent collaboration and adaptability. Suitable for DevOps teams.,2026-07-24T10:00:00Z
+
+assess_riasec_47,user44,RIASEC,87,Realistic:4|Investigative:5|Artistic:3|Social:3|Enterprising:4|Conventional:2,Recommended for Data Engineering and AI careers.,2026-07-25T09:00:00Z
+assess_aptitude_47,user44,Aptitude,88,Logical:90|Quantitative:87|Verbal:87,Strong aptitude. Continue advanced programming practice.,2026-07-25T09:30:00Z
+assess_personality_47,user44,Personality,92,Openness:93|Conscientiousness:92|Extraversion:73|Agreeableness:87|Neuroticism:17,Excellent technical and leadership skills. Suitable for engineering leadership.,2026-07-25T10:00:00Z
+
+assess_riasec_48,user45,RIASEC,80,Realistic:3|Investigative:4|Artistic:5|Social:4|Enterprising:3|Conventional:2,Creative thinker. Explore UI Design and Frontend Development.,2026-07-26T09:00:00Z
+assess_aptitude_48,user45,Aptitude,79,Logical:81|Quantitative:78|Verbal:78,Continue improving problem-solving speed and strengthen SQL fundamentals.,2026-07-26T09:30:00Z
+assess_personality_48,user45,Personality,87,Openness:88|Conscientiousness:88|Extraversion:70|Agreeableness:84|Neuroticism:22,Creative and dependable. Well suited for frontend and UI/UX teams.,2026-07-26T10:00:00Z
+
+assess_riasec_49,user46,RIASEC,91,Realistic:4|Investigative:5|Artistic:3|Social:2|Enterprising:4|Conventional:3,Outstanding fit for Artificial Intelligence, Data Science, and Software Engineering careers.,2026-07-27T09:00:00Z
+assess_aptitude_49,user46,Aptitude,90,Logical:93|Quantitative:89|Verbal:88,Excellent aptitude. Continue advanced coding practice and system design preparation.,2026-07-27T09:30:00Z
+assess_personality_49,user46,Personality,94,Openness:95|Conscientiousness:94|Extraversion:75|Agreeableness:88|Neuroticism:15,Excellent leadership potential with strong analytical skills. Ideal for technical leadership roles.,2026-07-27T10:00:00Z
+
+assess_riasec_50,user47,RIASEC,85,Realistic:4|Investigative:4|Artistic:3|Social:3|Enterprising:4|Conventional:3,Strong profile for Cloud Computing and Full-Stack Development. Continue building real-world projects.,2026-07-28T09:00:00Z
+assess_aptitude_50,user47,Aptitude,84,Logical:86|Quantitative:83|Verbal:83,Good reasoning ability. Improve coding efficiency through regular interview practice.,2026-07-28T09:30:00Z
+assess_personality_50,user47,Personality,90,Openness:91|Conscientiousness:91|Extraversion:72|Agreeableness:86|Neuroticism:18,Highly collaborative and dependable. Well suited for software engineering and cloud teams.,2026-07-28T10:00:00Z

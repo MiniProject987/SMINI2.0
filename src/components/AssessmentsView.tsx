@@ -117,9 +117,9 @@ export default function AssessmentsView({ token }: AssessmentsViewProps) {
           text: "A web crawler traverses 60 client pages per minute. How many seconds does it take to crawl 1 single page?",
           options: [
             { label: "1 second", value: "correct" },
-            { label: "6 seconds", value: "wrong" },
-            { label: "10 seconds", value: "wrong" },
-            { label: "0.1 seconds", value: "wrong" }
+            { label: "6 seconds", value: "wrong1" },
+            { label: "10 seconds", value: "wrong2" },
+            { label: "0.1 seconds", value: "wrong3" }
           ]
         },
         {

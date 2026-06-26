@@ -230,9 +230,22 @@ function inferCareerFromProfileText(profile: any) {
   return null;
 }
 
-function parseAssessmentInterest(answers: string) {
+function parseAssessmentInterest(answers: string | Record<string, any> | null | undefined) {
   const categories: Record<string, number> = {};
-  answers.split("|").forEach(segment => {
+  if (!answers) return categories;
+
+  let normalizedAnswers = "";
+  if (typeof answers === "string") {
+    normalizedAnswers = answers;
+  } else if (Array.isArray(answers)) {
+    normalizedAnswers = answers.map(item => String(item)).join("|");
+  } else if (typeof answers === "object") {
+    normalizedAnswers = Object.entries(answers)
+      .map(([key, value]) => `${key}:${value}`)
+      .join("|");
+  }
+
+  normalizedAnswers.split("|").forEach(segment => {
     const parts = segment.split(":");
     if (parts.length === 2) {
       const key = parts[0].trim();
@@ -269,6 +282,40 @@ function careerRoleSkillMap(career: string) {
     return ["React.js", "Node.js", "TypeScript", "REST APIs", "AWS/Cloud Services"];
   }
   return ["JavaScript", "Python", "SQL", "Git", "REST APIs"];
+}
+
+function recommendCoursesForCareer(career: string, currentSkills: string[]) {
+  const requiredSkills = careerRoleSkillMap(career).map(skill => normalizeText(skill));
+  const normalizedCurrentSkills = currentSkills.map(skill => normalizeText(skill));
+
+  return db.courses.getAll().map((course: any) => {
+    const skillsTaught = Array.isArray(course.skillsTaught)
+      ? course.skillsTaught
+      : String(course.skillsTaught).split("|").map((s: string) => s.trim());
+    const normalizedCourseSkills = skillsTaught.map((skill: string) => normalizeText(skill));
+    const matchingSkills = skillsTaught.filter((skill: string) => requiredSkills.includes(normalizeText(skill)));
+    const newSkills = skillsTaught.filter((skill: string) => !normalizedCurrentSkills.includes(normalizeText(skill)));
+    const careerMatchScore = matchingSkills.length * 15;
+    const novelSkillScore = newSkills.length * 5;
+    const difficultyPenalty = String(course.difficulty || "").toLowerCase() === "advanced" ? -5 : 0;
+    const score = Math.max(0, careerMatchScore + novelSkillScore + difficultyPenalty);
+
+    return {
+      ...course,
+      skillsTaught,
+      matchingSkills,
+      newSkills,
+      score
+    };
+  })
+  .sort((a: any, b: any) => (b.score || 0) - (a.score || 0))
+  .slice(0, 5)
+  .map((course: any) => ({
+    ...course,
+    skillsTaught: Array.isArray(course.skillsTaught)
+      ? course.skillsTaught
+      : String(course.skillsTaught).split("|").map((s: string) => s.trim())
+  }));
 }
 
 function compareResumeToCareer(extractedSkills: string[], careerSkills: string[]) {
@@ -690,8 +737,9 @@ routes.post("/api/resumes/analyze", authenticate, upload.single("resume"), (req:
     recommendedSkills: profile?.recommendedCareerSkills || careerRoleSkillMap(profile?.recommendedCareer || inferCareerFromProfileText(profile) || "Software Engineer")
   };
 
-  const targetCareer = advisory.recommendedCareer;
-  const careerSkills = advisory.recommendedSkills;
+  const requestedCareer = String(req.body.targetCareer || "").trim();
+  const targetCareer = requestedCareer || advisory.recommendedCareer;
+  const careerSkills = requestedCareer ? careerRoleSkillMap(targetCareer) : advisory.recommendedSkills;
 
   if (!req.file) {
     return res.status(400).json({ error: "Please upload a resume file." });
@@ -714,14 +762,8 @@ routes.post("/api/resumes/analyze", authenticate, upload.single("resume"), (req:
     recommendedCareerSkills: careerSkills
   });
 
-  if (profile) {
-    db.careerProfiles.update(profile.id, {
-      employabilityScore: offlineResult.overallScore,
-      recommendedCareer: targetCareer,
-      recommendedCareerSkills: careerSkills
-    });
-  }
-
+  // Do not overwrite the user's career profile recommendation when analyzing a resume.
+  // Resume target jobs are for analysis only and should not permanently change the profile recommendation.
   return res.status(201).json(analysis);
 });
 
@@ -812,6 +854,47 @@ routes.post("/api/skills/suggestions", authenticate, (req: Request, res: Respons
   res.json(filtered.slice(0, 6));
 });
 
+routes.get("/api/courses", authenticate, (req: Request, res: Response) => {
+  const courses = db.courses.getAll().map((course: any) => ({
+    ...course,
+    skillsTaught: Array.isArray(course.skillsTaught)
+      ? course.skillsTaught
+      : String(course.skillsTaught).split("|").map((s: string) => s.trim())
+  }));
+  res.json(courses);
+});
+
+routes.get("/api/courses/recommendations", authenticate, (req: Request, res: Response) => {
+  const user = (req as any).user;
+  const profile = db.careerProfiles.findOne(p => p.userId === user.id) || {};
+  const currentSkills = db.skills.find(s => s.userId === user.id).map(s => s.name);
+  const advisory = updateCareerRecommendation(user) || {
+    recommendedCareer: profile?.recommendedCareer || inferCareerFromProfileText(profile) || "Software Engineer",
+    recommendedSkills: profile?.recommendedCareerSkills || careerRoleSkillMap(profile?.recommendedCareer || inferCareerFromProfileText(profile) || "Software Engineer")
+  };
+
+  const recommendedCourses = recommendCoursesForCareer(advisory.recommendedCareer, currentSkills);
+  // Basic salary estimate helper (non-authoritative). Use local heuristics for display.
+  function salaryEstimateForCareer(career: string) {
+    const text = normalizeText(career);
+    if (text.includes("data") || text.includes("ml") || text.includes("ai")) return "₹8,00,000 - ₹20,00,000";
+    if (text.includes("frontend") || text.includes("ui") || text.includes("design")) return "₹4,00,000 - ₹12,00,000";
+    if (text.includes("devops") || text.includes("cloud") || text.includes("sre")) return "₹6,00,000 - ₹18,00,000";
+    if (text.includes("cyber") || text.includes("security")) return "₹5,00,000 - ₹16,00,000";
+    if (text.includes("product") || text.includes("manager")) return "₹10,00,000 - ₹25,00,000";
+    if (text.includes("backend") || text.includes("api")) return "₹5,00,000 - ₹15,00,000";
+    if (text.includes("full-stack") || text.includes("full stack")) return "₹6,00,000 - ₹18,00,000";
+    return "₹3,50,000 - ₹12,00,000";
+  }
+
+  res.json({
+    recommendedCareer: advisory.recommendedCareer,
+    recommendedSkills: advisory.recommendedSkills,
+    recommendedCourses,
+    salaryEstimate: salaryEstimateForCareer(advisory.recommendedCareer)
+  });
+});
+
 // ==========================================
 // 6. JOB MATCHING MODULE
 // ==========================================
@@ -835,7 +918,8 @@ routes.post("/api/jobs/generate-matches", authenticate, (req: Request, res: Resp
   const recommendedSkills = (advisory?.recommendedSkills || profile.recommendedCareerSkills || careerRoleSkillMap(recommendedCareer)) as string[];
 
   const allJobs = db.jobs.getAll();
-  const matched = allJobs.map(job => {
+  const defaultSources = ["LinkedIn", "Naukri", "Unstop", "Indeed", "Glassdoor"];
+  const matched = allJobs.map((job, index) => {
     const reqSkills = Array.isArray(job.skillsRequired) ? job.skillsRequired : [];
     const normalizedReqSkills = reqSkills.map((s: string) => normalizeText(s));
     
@@ -855,9 +939,11 @@ routes.post("/api/jobs/generate-matches", authenticate, (req: Request, res: Resp
     const careerBoost = Math.min(20, Math.round((careerSkillMatches.length / Math.max(recommendedSkills.length, 1)) * 25));
     const careerFitScore = ((job.title || "").toLowerCase().includes(recommendedCareer.toLowerCase()) || (job.description || "").toLowerCase().includes(recommendedCareer.toLowerCase())) ? 10 : 0;
     const careerScore = Math.min(matchPercentage + careerBoost + careerFitScore, 100);
+    const source = job.source || defaultSources[index % defaultSources.length];
 
     return {
       ...job,
+      source,
       matchPercentage,
       missingSkills,
       matchingSkills: reqSkills.filter((s: string) => userSkills.includes(s.toLowerCase())),

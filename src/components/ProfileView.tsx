@@ -93,6 +93,7 @@ export default function ProfileView({ token }: ProfileViewProps) {
         const data = await res.json();
         setProfile(data);
         setMessage({ type: "success", text: "Career profile saved successfully!" });
+        window.dispatchEvent(new Event("profileUpdated"));
         // Auto-scroll on completion or clear message later
         setTimeout(() => setMessage(null), 3000);
       } else {

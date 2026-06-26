@@ -58,3 +58,44 @@ skill_56,student,Tailwind CSS,tool,Beginner,68
 skill_57,student,SEO,technical,Advanced,71
 skill_58,student,Analytics,technical,Intermediate,74
 skill_59,student,Product Management,technical,Beginner,77
+skill_60,student,Communication,soft skill,Advanced,80
+skill_61,student,Teamwork,soft skill,Intermediate,83
+skill_62,student,Problem Solving,soft skill,Advanced,86
+skill_63,student,Critical Thinking,soft skill,Intermediate,89
+skill_64,student,Leadership,soft skill,Beginner,92
+skill_65,student,Time Management,soft skill,Advanced,95
+skill_66,student,Adaptability,soft skill,Intermediate,98
+skill_67,student,Creativity,soft skill,Beginner,51
+skill_68,student,Presentation Skills,soft skill,Advanced,54
+skill_69,student,Technical Writing,soft skill,Intermediate,57
+skill_70,student,Agile,technical,Beginner,60
+skill_71,student,Scrum,technical,Advanced,63
+skill_72,student,JIRA,tool,Intermediate,66
+skill_73,student,Confluence,tool,Beginner,69
+skill_74,student,Power BI,tool,Advanced,72
+skill_75,student,Tableau,tool,Intermediate,75
+skill_76,student,Apache Kafka,technical,Beginner,78
+skill_77,student,Apache Airflow,technical,Advanced,81
+skill_78,student,Solidity,language,Intermediate,84
+skill_79,student,Flutter,framework,Beginner,87
+skill_80,student,Firebase,tool,Advanced,90
+skill_81,student,Dart,language,Intermediate,93
+skill_82,student,Android SDK,framework,Beginner,96
+skill_83,student,SQLite,technical,Advanced,99
+skill_84,student,Redux,framework,Intermediate,52
+skill_85,student,Next.js,framework,Beginner,55
+skill_86,student,React Native,framework,Advanced,58
+skill_87,student,Microservices,technical,Intermediate,61
+skill_88,student,System Design,technical,Beginner,64
+skill_89,student,Deep Learning,technical,Advanced,67
+skill_90,student,NLP,technical,Intermediate,70
+skill_91,student,Transformers,framework,Beginner,73
+skill_92,student,Prompt Engineering,technical,Advanced,76
+skill_93,student,LLMs,technical,Intermediate,79
+skill_94,student,Generative AI,technical,Beginner,82
+skill_95,student,Computer Vision,technical,Advanced,85
+skill_96,student,ETL,technical,Intermediate,88
+skill_97,student,Data Visualization,technical,Beginner,91
+skill_98,student,Wireframing,technical,Advanced,94
+skill_99,student,Prototyping,technical,Intermediate,97
+skill_100,student,Adobe XD,tool,Beginner,100

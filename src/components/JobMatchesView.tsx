@@ -26,8 +26,13 @@ export default function JobMatchesView({ token }: JobMatchesViewProps) {
   const [savedJobIds, setSavedJobIds] = useState<string[]>([]);
   const [appliedJobIds, setAppliedJobIds] = useState<string[]>([]);
 
-  // Search keyword filter
+  // Search and filter state
   const [search, setSearch] = useState("");
+  const [roleFilter, setRoleFilter] = useState("");
+  const [companyFilter, setCompanyFilter] = useState("");
+  const [minSalary, setMinSalary] = useState("");
+  const [maxSalary, setMaxSalary] = useState("");
+  const [sourceFilter, setSourceFilter] = useState("");
 
   const loadJobMatches = async () => {
     if (!token) return;
@@ -51,6 +56,14 @@ export default function JobMatchesView({ token }: JobMatchesViewProps) {
 
   useEffect(() => {
     loadJobMatches();
+  }, [token]);
+
+  useEffect(() => {
+    const refreshJobs = () => {
+      loadJobMatches();
+    };
+    window.addEventListener("profileUpdated", refreshJobs);
+    return () => window.removeEventListener("profileUpdated", refreshJobs);
   }, [token]);
 
   const handleRecalculate = async () => {
@@ -77,10 +90,46 @@ export default function JobMatchesView({ token }: JobMatchesViewProps) {
   };
 
   // Filter jobs based on search term
+  const parseSalaryValue = (value: string) => {
+    const normalizedValue = value.toLowerCase().replace(/,/g, "").trim();
+    const match = normalizedValue.match(/(\d+(?:\.\d+)?)(k|m)?/);
+    if (!match) return NaN;
+    const number = Number(match[1]);
+    const suffix = match[2];
+    if (suffix === "k") return number * 1000;
+    if (suffix === "m") return number * 1000000;
+    return number;
+  };
+
+  const filterSalaryRange = (salary: string) => {
+    if (!salary) return true;
+    const matches = salary.match(/(\d+(?:\.\d+)?\s*(?:k|m)?)/gi);
+    if (!matches || matches.length < 2) return true;
+    const [lowText, highText] = matches;
+    const low = parseSalaryValue(lowText);
+    const high = parseSalaryValue(highText);
+    if (Number.isNaN(low) || Number.isNaN(high)) return true;
+
+    const min = Number(minSalary.replace(/[^0-9]/g, ""));
+    const max = Number(maxSalary.replace(/[^0-9]/g, ""));
+    if (min && high < min) return false;
+    if (max && low > max) return false;
+    return true;
+  };
+
   const filteredJobs = jobs.filter(job => {
-    return job.title.toLowerCase().includes(search.toLowerCase()) || 
-           job.company.toLowerCase().includes(search.toLowerCase()) || 
-           (job.skillsRequired && job.skillsRequired.some(s => s.toLowerCase().includes(search.toLowerCase())));
+    const searchValue = search.toLowerCase();
+    const matchesSearch =
+      job.title.toLowerCase().includes(searchValue) ||
+      job.company.toLowerCase().includes(searchValue) ||
+      (job.skillsRequired && job.skillsRequired.some(s => s.toLowerCase().includes(searchValue)));
+
+    const matchesRole = roleFilter ? job.title.toLowerCase().includes(roleFilter.toLowerCase()) : true;
+    const matchesCompany = companyFilter ? job.company.toLowerCase().includes(companyFilter.toLowerCase()) : true;
+    const matchesSource = sourceFilter ? job.source?.toLowerCase().includes(sourceFilter.toLowerCase()) : true;
+    const matchesSalary = filterSalaryRange(job.salary || "");
+
+    return matchesSearch && matchesRole && matchesCompany && matchesSource && matchesSalary;
   });
 
   return (
@@ -115,17 +164,59 @@ export default function JobMatchesView({ token }: JobMatchesViewProps) {
       </div>
 
       {/* Filter Row with input search bar */}
-      <div className="flex gap-4 items-center bg-white p-4 rounded-2xl border border-gray-50 shadow-sm" id="jobs-filter-unit">
-        <div className="relative flex-1">
-          <Search className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+      <div className="bg-white p-4 rounded-2xl border border-gray-50 shadow-sm" id="jobs-filter-unit">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-3">
+          <div className="relative">
+            <Search className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search roles, companies or skills..."
+              id="input-jobs-search"
+              className="w-full pl-10 pr-4 py-2.5 text-xs rounded-xl border border-gray-200 focus:outline-none focus:border-violet-400"
+            />
+          </div>
           <input
             type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search matching job listings, companies or specific skills..."
-            id="input-jobs-search"
-            className="w-full pl-10 pr-4 py-2.5 text-xs rounded-xl border border-gray-200 focus:outline-none focus:border-violet-400"
+            value={roleFilter}
+            onChange={(e) => setRoleFilter(e.target.value)}
+            placeholder="Role filter"
+            className="w-full px-4 py-2.5 text-xs rounded-xl border border-gray-200 focus:outline-none focus:border-violet-400"
           />
+          <input
+            type="text"
+            value={companyFilter}
+            onChange={(e) => setCompanyFilter(e.target.value)}
+            placeholder="Company filter"
+            className="w-full px-4 py-2.5 text-xs rounded-xl border border-gray-200 focus:outline-none focus:border-violet-400"
+          />
+          <input
+            type="text"
+            value={minSalary}
+            onChange={(e) => setMinSalary(e.target.value)}
+            placeholder="Min salary"
+            className="w-full px-4 py-2.5 text-xs rounded-xl border border-gray-200 focus:outline-none focus:border-violet-400"
+          />
+          <input
+            type="text"
+            value={maxSalary}
+            onChange={(e) => setMaxSalary(e.target.value)}
+            placeholder="Max salary"
+            className="w-full px-4 py-2.5 text-xs rounded-xl border border-gray-200 focus:outline-none focus:border-violet-400"
+          />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+          <input
+            type="text"
+            value={sourceFilter}
+            onChange={(e) => setSourceFilter(e.target.value)}
+            placeholder="Source (LinkedIn, Naukri, Unstop, etc.)"
+            className="w-full px-4 py-2.5 text-xs rounded-xl border border-gray-200 focus:outline-none focus:border-violet-400"
+          />
+          <div className="text-xs text-slate-500 leading-relaxed">
+            Filter jobs by role, company, salary range or source to mimic aggregator search across LinkedIn/Naukri/Unstop style feeds.
+          </div>
         </div>
       </div>
 
@@ -183,6 +274,12 @@ export default function JobMatchesView({ token }: JobMatchesViewProps) {
                       <Briefcase className="w-3.5 h-3.5" />
                       <span className="capitalize">{job.experience} level</span>
                     </div>
+                    {job.source && (
+                      <div className="flex items-center gap-1">
+                        <Sparkles className="w-3.5 h-3.5 text-slate-400" />
+                        <span className="capitalize">{job.source}</span>
+                      </div>
+                    )}
                   </div>
                 </div>
 

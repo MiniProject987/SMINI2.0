@@ -808,14 +808,8 @@
       "Express.js",
       "MongoDB",
       "MySQL",
-      "Python",
       "Java",
-      "Git and GitHub",
-      "REST APIs",
-      "AWS/Cloud Services",
-      "Docker",
-      "TypeScript",
-      "Machine Learning"
+      "TypeScript"
     ],
     "softSkills": [
       "Problem Solving",
@@ -832,7 +826,6 @@
       "Python Programming Certification",
       "Java Programming Certification",
       "Database Management Systems",
-      "Cloud Computing Fundamnetals",
       "AI/ML"
     ],
     "interests": [
@@ -841,19 +834,16 @@
       "AI",
       "Open source Projects",
       "UI/UX Design",
-      "Cloud Technologies",
-      "Learning New Technologies",
-      "Data Science"
+      "Learning New Technologies"
     ],
     "preferredRoles": [
       "Full Stack Developer",
       "Front-End Developer",
       "Back-End Developer",
       "Software Developer",
-      "Web Application Developer",
-      "Data Analysts"
+      "Web Application Developer"
     ],
-    "employabilityScore": 65,
+    "employabilityScore": 72,
     "careerReadinessScore": 100,
     "id": "rec_1782379486150_y7zlr",
     "recommendedCareer": "Data Scientist",
@@ -867,29 +857,21 @@
   },
   {
     "userId": "student",
-    "headline": "Test save",
-    "location": "Test City",
+    "headline": "Integration test",
+    "location": "Test",
     "workPreference": "Remote",
     "experienceLevel": "Entry Level",
-    "bio": "Test bio",
-    "careerGoals": "Test goals",
+    "bio": "",
+    "careerGoals": "",
     "technicalSkills": [
-      "JavaScript"
+      "JS"
     ],
-    "softSkills": [
-      "Communication"
-    ],
-    "certifications": [
-      "Cert"
-    ],
-    "interests": [
-      "Coding"
-    ],
-    "preferredRoles": [
-      "Frontend Developer"
-    ],
-    "employabilityScore": 80,
-    "careerReadinessScore": 85,
+    "softSkills": [],
+    "certifications": [],
+    "interests": [],
+    "preferredRoles": [],
+    "employabilityScore": 50,
+    "careerReadinessScore": 55,
     "id": "rec_1782380046112_u9kxz",
     "recommendedCareer": "Data Scientist",
     "recommendedCareerSkills": [

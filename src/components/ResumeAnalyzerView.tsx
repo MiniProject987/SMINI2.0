@@ -66,6 +66,7 @@ export default function ResumeAnalyzerView({ token }: ResumeAnalyzerViewProps) {
   const [uploading, setUploading] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [targetCareer, setTargetCareer] = useState("");
 
   const fetchHistory = async (autoSelect = true) => {
     if (!token) return;
@@ -91,6 +92,25 @@ export default function ResumeAnalyzerView({ token }: ResumeAnalyzerViewProps) {
 
   useEffect(() => {
     fetchHistory();
+  }, [token]);
+
+  // Auto-fill target career from user profile recommendation
+  useEffect(() => {
+    const fetchProfile = async () => {
+      if (!token) return;
+      try {
+        const res = await fetch("/api/profile", { headers: { Authorization: `Bearer ${token}` } });
+        if (res.ok) {
+          const data = await res.json();
+          if (!targetCareer && data.recommendedCareer) {
+            setTargetCareer(data.recommendedCareer);
+          }
+        }
+      } catch (err) {
+        // ignore
+      }
+    };
+    fetchProfile();
   }, [token]);
 
   // Drag and drop event handlers
@@ -127,6 +147,9 @@ export default function ResumeAnalyzerView({ token }: ResumeAnalyzerViewProps) {
       setUploading(true);
       const formData = new FormData();
       formData.append("resume", file);
+      if (targetCareer.trim()) {
+        formData.append("targetCareer", targetCareer.trim());
+      }
 
       const res = await fetch("/api/resumes/analyze", {
         method: "POST",
@@ -141,6 +164,7 @@ export default function ResumeAnalyzerView({ token }: ResumeAnalyzerViewProps) {
         setActiveAnalysis(data);
         setFile(null); // reset file
         fetchHistory(false); // reload but don't force select first
+        window.dispatchEvent(new Event("profileUpdated"));
       } else {
         alert("Upload error. Check network connectivity.");
       }
@@ -198,6 +222,18 @@ export default function ResumeAnalyzerView({ token }: ResumeAnalyzerViewProps) {
               <p className="leading-relaxed text-[11px]">
                 Your resume will be analyzed against your current recommended career path in the profile and the skills you have registered in the platform.
               </p>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-[10px] uppercase tracking-wider font-bold text-slate-500">Target Career Path</label>
+              <input
+                type="text"
+                value={targetCareer}
+                onChange={(e) => setTargetCareer(e.target.value)}
+                placeholder="Optional: e.g. Frontend Developer"
+                className="w-full px-4 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-400"
+              />
+              <p className="text-[10px] text-slate-400">Leave blank to use your profile's recommended career path.</p>
             </div>
 
             {/* Drag and Drop Box */}

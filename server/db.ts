@@ -1,12 +1,38 @@
 import fs from "fs";
 import path from "path";
 
-// Define the root storage location
-const DATA_DIR = path.join(process.cwd(), "data");
+// Define the root storage location for runtime JSON data.
+// Use a hidden folder outside the project static `data/` so Vite doesn't
+// watch it and trigger HMR reload loops when the server updates JSON files.
+const DATA_DIR = path.join(process.cwd(), ".server_data");
+
+// If a legacy `data/` folder exists (repo seed), copy its files into
+// `.server_data` on first run so existing seeded content is preserved.
+const LEGACY_DATA_DIR = path.join(process.cwd(), "data");
 
 // Helper to ensure data folder exists
 if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
+
+  // Copy seeded JSON files from legacy data folder if present
+  try {
+    if (fs.existsSync(LEGACY_DATA_DIR)) {
+      const items = fs.readdirSync(LEGACY_DATA_DIR);
+      items.forEach(name => {
+        const src = path.join(LEGACY_DATA_DIR, name);
+        const dest = path.join(DATA_DIR, name);
+        // Only copy files (not directories) and avoid overwriting
+        if (fs.existsSync(src) && !fs.existsSync(dest)) {
+          const stat = fs.statSync(src);
+          if (stat.isFile()) {
+            fs.copyFileSync(src, dest);
+          }
+        }
+      });
+    }
+  } catch (err) {
+    console.error("Error copying legacy data to .server_data:", err);
+  }
 }
 
 // Function to parse CSV lines safely

@@ -74,6 +74,7 @@ export interface JobMatch {
   type: 'remote' | 'on-site' | 'hybrid' | string;
   experience: 'entry' | 'mid' | 'senior' | 'lead' | string;
   salary: string;
+  source?: string;
   skillsRequired: string[];
   description: string;
   matchPercentage?: number;
@@ -81,6 +82,20 @@ export interface JobMatch {
   matchingSkills?: string[];
   careerScore?: number;
   careerSkillMatches?: string[];
+  recommendedCareer?: string;
+}
+
+export interface CourseItem {
+  id: string;
+  title: string;
+  provider: string;
+  duration: string;
+  difficulty: string;
+  skillsTaught: string[];
+  link: string;
+  score?: number;
+  matchingSkills?: string[];
+  newSkills?: string[];
 }
 
 export interface LearningGoal {
