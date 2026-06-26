@@ -2011,5 +2011,247 @@
       "REST APIs"
     ],
     "id": "rec_1782466870826_3qebq"
+  },
+  {
+    "userId": "admin",
+    "fileName": "ATS_Full_Stack_Developer_Resume.pdf",
+    "overallScore": 65,
+    "atsScore": 60,
+    "formatScore": 80,
+    "skillsScore": 62,
+    "educationScore": 85,
+    "experienceScore": 35,
+    "keywordsScore": 55,
+    "strengths": [
+      "Outstanding academic record with high grades/CGPA",
+      "Diverse range of projects covering AI, Web Development, and Databases",
+      "Strong core Computer Science fundamentals (DSA, OOPs, DBMS)"
+    ],
+    "weaknesses": [
+      "Lack of formal professional work experience or industrial internships",
+      "Missing exposure to modern high-velocity enterprise frameworks (e.g., React, Spring Boot)",
+      "Projects lack impact-based descriptions or production metrics"
+    ],
+    "suggestions": [
+      "Quantify project achievements using metrics (e.g., 'achieved 95% accuracy in face recognition' or 'reduced data retrieval time by 20%')",
+      "Include clickable links to your GitHub repositories or live project demos",
+      "Add a 'Relevant Coursework' section to showcase specialized learning in your degree",
+      "Clarify your role in software hackathons and highlight specific problem solving",
+      "Diversify the 'Technical Skills' section by adding modern web frameworks or cloud platforms you are currently learning"
+    ],
+    "missingSkills": [
+      "Pandas"
+    ],
+    "recommendedCareer": "Data Scientist",
+    "recommendedCareerSkills": [
+      "Python",
+      "Pandas",
+      "scikit-learn",
+      "SQL",
+      "Machine Learning"
+    ],
+    "extractedSkills": [
+      "C",
+      "CN",
+      "Ai",
+      "C",
+      "Java",
+      "Python",
+      "Javascript",
+      "HTML",
+      "MySQL",
+      "Git",
+      "Github",
+      "DSA",
+      "OOPs",
+      "Web development"
+    ],
+    "careerMatchScore": 80,
+    "careerMissingSkills": [
+      "Pandas"
+    ],
+    "id": "rec_1782477341899_rzbsb"
+  },
+  {
+    "userId": "admin",
+    "fileName": "ATS_Full_Stack_Developer_Resume.pdf",
+    "overallScore": 65,
+    "atsScore": 60,
+    "formatScore": 80,
+    "skillsScore": 62,
+    "educationScore": 85,
+    "experienceScore": 35,
+    "keywordsScore": 55,
+    "strengths": [
+      "Outstanding academic record with high grades/CGPA",
+      "Diverse range of projects covering AI, Web Development, and Databases",
+      "Strong core Computer Science fundamentals (DSA, OOPs, DBMS)"
+    ],
+    "weaknesses": [
+      "Lack of formal professional work experience or industrial internships",
+      "Missing exposure to modern high-velocity enterprise frameworks (e.g., React, Spring Boot)",
+      "Projects lack impact-based descriptions or production metrics"
+    ],
+    "suggestions": [
+      "Quantify project achievements using metrics (e.g., 'achieved 95% accuracy in face recognition' or 'reduced data retrieval time by 20%')",
+      "Include clickable links to your GitHub repositories or live project demos",
+      "Add a 'Relevant Coursework' section to showcase specialized learning in your degree",
+      "Clarify your role in software hackathons and highlight specific problem solving",
+      "Diversify the 'Technical Skills' section by adding modern web frameworks or cloud platforms you are currently learning"
+    ],
+    "missingSkills": [
+      "REST APIs"
+    ],
+    "recommendedCareer": "Developer",
+    "recommendedCareerSkills": [
+      "JavaScript",
+      "Python",
+      "SQL",
+      "Git",
+      "REST APIs"
+    ],
+    "extractedSkills": [
+      "C",
+      "CN",
+      "Ai",
+      "C",
+      "Java",
+      "Python",
+      "Javascript",
+      "HTML",
+      "MySQL",
+      "Git",
+      "Github",
+      "DSA",
+      "OOPs",
+      "Web development"
+    ],
+    "careerMatchScore": 80,
+    "careerMissingSkills": [
+      "REST APIs"
+    ],
+    "id": "rec_1782483601652_9h2y8"
+  },
+  {
+    "userId": "admin",
+    "fileName": "SaniyaHKJSS.pdf",
+    "overallScore": 72,
+    "atsScore": 68,
+    "formatScore": 85,
+    "skillsScore": 72,
+    "educationScore": 95,
+    "experienceScore": 40,
+    "keywordsScore": 62,
+    "strengths": [
+      "Outstanding academic record with high grades/CGPA",
+      "Diverse range of projects covering AI, Web Development, and Databases",
+      "Strong core Computer Science fundamentals (DSA, OOPs, DBMS)"
+    ],
+    "weaknesses": [
+      "Lack of formal professional work experience or industrial internships",
+      "Missing exposure to modern high-velocity enterprise frameworks (e.g., React, Spring Boot)",
+      "Projects lack impact-based descriptions or production metrics"
+    ],
+    "suggestions": [
+      "Quantify project achievements using metrics (e.g., 'achieved 95% accuracy in face recognition' or 'reduced data retrieval time by 20%')",
+      "Include clickable links to your GitHub repositories or live project demos",
+      "Add a 'Relevant Coursework' section to showcase specialized learning in your degree",
+      "Clarify your role in software hackathons and highlight specific problem solving",
+      "Diversify the 'Technical Skills' section by adding modern web frameworks or cloud platforms you are currently learning"
+    ],
+    "missingSkills": [
+      "Pandas"
+    ],
+    "recommendedCareer": "Data Scientist",
+    "recommendedCareerSkills": [
+      "Python",
+      "Pandas",
+      "scikit-learn",
+      "SQL",
+      "Machine Learning"
+    ],
+    "extractedSkills": [
+      "C",
+      "CN",
+      "Ai",
+      "Ml",
+      "C",
+      "Java",
+      "Python",
+      "Javascript",
+      "HTML",
+      "MySQL",
+      "Git",
+      "Github",
+      "DSA",
+      "OOPs",
+      "Web development"
+    ],
+    "careerMatchScore": 80,
+    "careerMissingSkills": [
+      "Pandas"
+    ],
+    "id": "rec_1782483611166_qnut3"
+  },
+  {
+    "userId": "admin",
+    "fileName": "SaniyaHKJSS.pdf",
+    "overallScore": 72,
+    "atsScore": 68,
+    "formatScore": 85,
+    "skillsScore": 72,
+    "educationScore": 95,
+    "experienceScore": 40,
+    "keywordsScore": 62,
+    "strengths": [
+      "Outstanding academic record with high grades/CGPA",
+      "Diverse range of projects covering AI, Web Development, and Databases",
+      "Strong core Computer Science fundamentals (DSA, OOPs, DBMS)"
+    ],
+    "weaknesses": [
+      "Lack of formal professional work experience or industrial internships",
+      "Missing exposure to modern high-velocity enterprise frameworks (e.g., React, Spring Boot)",
+      "Projects lack impact-based descriptions or production metrics"
+    ],
+    "suggestions": [
+      "Quantify project achievements using metrics (e.g., 'achieved 95% accuracy in face recognition' or 'reduced data retrieval time by 20%')",
+      "Include clickable links to your GitHub repositories or live project demos",
+      "Add a 'Relevant Coursework' section to showcase specialized learning in your degree",
+      "Clarify your role in software hackathons and highlight specific problem solving",
+      "Diversify the 'Technical Skills' section by adding modern web frameworks or cloud platforms you are currently learning"
+    ],
+    "missingSkills": [
+      "REST APIs"
+    ],
+    "recommendedCareer": "Developer",
+    "recommendedCareerSkills": [
+      "JavaScript",
+      "Python",
+      "SQL",
+      "Git",
+      "REST APIs"
+    ],
+    "extractedSkills": [
+      "C",
+      "CN",
+      "Ai",
+      "Ml",
+      "C",
+      "Java",
+      "Python",
+      "Javascript",
+      "HTML",
+      "MySQL",
+      "Git",
+      "Github",
+      "DSA",
+      "OOPs",
+      "Web development"
+    ],
+    "careerMatchScore": 80,
+    "careerMissingSkills": [
+      "REST APIs"
+    ],
+    "id": "rec_1782483629945_du7er"
   }
 ]

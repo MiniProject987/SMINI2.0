@@ -64,6 +64,10 @@ export interface ResumeAnalysis {
   recommendedCareerSkills?: string[];
   careerMatchScore?: number;
   careerMissingSkills?: string[];
+  matchingSkills?: string[];
+  recommendedCourses?: CourseItem[];
+  careerSalaryEstimate?: string;
+  targetCareer?: string;
 }
 
 export interface JobMatch {
@@ -89,6 +93,9 @@ export interface CourseItem {
   id: string;
   title: string;
   provider: string;
+  platform?: string;
+  source?: string;
+  rank?: number;
   duration: string;
   difficulty: string;
   skillsTaught: string[];

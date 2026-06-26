@@ -7,6 +7,7 @@ import AssessmentsView from "./components/AssessmentsView";
 import ResumeAnalyzerView from "./components/ResumeAnalyzerView";
 import SkillsView from "./components/SkillsView";
 import JobMatchesView from "./components/JobMatchesView";
+import CoursesView from "./components/CoursesView";
 import LearningGoalsView from "./components/LearningGoalsView";
 import MentorView from "./components/MentorView";
 import { User } from "./types";
@@ -111,6 +112,8 @@ export default function App() {
         return <SkillsView token={token} />;
       case "jobs":
         return <JobMatchesView token={token} />;
+      case "courses":
+        return <CoursesView token={token} />;
       case "goals":
         return <LearningGoalsView token={token} />;
       case "mentor":

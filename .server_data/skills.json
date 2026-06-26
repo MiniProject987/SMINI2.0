@@ -467,24 +467,24 @@
     "userId": "admin",
     "name": "React.js",
     "category": "framework",
-    "level": "Advanced",
-    "progress": 30,
+    "level": "Beginner",
+    "progress": 100,
     "id": "rec_1782382208733_3qe40"
   },
   {
     "userId": "admin",
     "name": "TypeScript",
     "category": "language",
-    "level": "Beginner",
-    "progress": 30,
+    "level": "Advanced",
+    "progress": 100,
     "id": "rec_1782382242942_lfso1"
   },
   {
     "userId": "admin",
     "name": "Node.js",
     "category": "framework",
-    "level": "Advanced",
-    "progress": 30,
+    "level": "Intermediate",
+    "progress": 100,
     "id": "rec_1782382247087_i9gl0"
   }
 ]

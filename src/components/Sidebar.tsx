@@ -29,6 +29,7 @@ export default function Sidebar({ activeTab, setActiveTab, currentUser, onLogout
     { id: "resume", label: "Resume Analyzer", icon: FileCheck },
     { id: "skills", label: "Skills", icon: Award },
     { id: "jobs", label: "Job Matches", icon: Briefcase },
+    { id: "courses", label: "Courses", icon: BookOpen },
     { id: "goals", label: "Learning Goals", icon: BookOpen },
   ];
 

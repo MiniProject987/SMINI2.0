@@ -284,6 +284,18 @@ function careerRoleSkillMap(career: string) {
   return ["JavaScript", "Python", "SQL", "Git", "REST APIs"];
 }
 
+function salaryEstimateForCareer(career: string) {
+  const text = normalizeText(career);
+  if (text.includes("data") || text.includes("ml") || text.includes("ai")) return "₹8,00,000 - ₹20,00,000";
+  if (text.includes("frontend") || text.includes("ui") || text.includes("design")) return "₹4,00,000 - ₹12,00,000";
+  if (text.includes("devops") || text.includes("cloud") || text.includes("sre")) return "₹6,00,000 - ₹18,00,000";
+  if (text.includes("cyber") || text.includes("security")) return "₹5,00,000 - ₹16,00,000";
+  if (text.includes("product") || text.includes("manager")) return "₹10,00,000 - ₹25,00,000";
+  if (text.includes("backend") || text.includes("api")) return "₹5,00,000 - ₹15,00,000";
+  if (text.includes("full-stack") || text.includes("full stack")) return "₹6,00,000 - ₹18,00,000";
+  return "₹3,50,000 - ₹12,00,000";
+}
+
 function recommendCoursesForCareer(career: string, currentSkills: string[]) {
   const requiredSkills = careerRoleSkillMap(career).map(skill => normalizeText(skill));
   const normalizedCurrentSkills = currentSkills.map(skill => normalizeText(skill));
@@ -300,18 +312,24 @@ function recommendCoursesForCareer(career: string, currentSkills: string[]) {
     const difficultyPenalty = String(course.difficulty || "").toLowerCase() === "advanced" ? -5 : 0;
     const score = Math.max(0, careerMatchScore + novelSkillScore + difficultyPenalty);
 
+    const platform = course.provider || course.platform || course.source || "Unknown";
+    const source = course.provider || course.platform || course.source || "Unknown";
+
     return {
       ...course,
       skillsTaught,
       matchingSkills,
       newSkills,
-      score
+      score,
+      platform,
+      source
     };
   })
   .sort((a: any, b: any) => (b.score || 0) - (a.score || 0))
-  .slice(0, 5)
-  .map((course: any) => ({
+  .slice(0, 6)
+  .map((course: any, index: number) => ({
     ...course,
+    rank: index + 1,
     skillsTaught: Array.isArray(course.skillsTaught)
       ? course.skillsTaught
       : String(course.skillsTaught).split("|").map((s: string) => s.trim())
@@ -740,6 +758,7 @@ routes.post("/api/resumes/analyze", authenticate, upload.single("resume"), (req:
   const requestedCareer = String(req.body.targetCareer || "").trim();
   const targetCareer = requestedCareer || advisory.recommendedCareer;
   const careerSkills = requestedCareer ? careerRoleSkillMap(targetCareer) : advisory.recommendedSkills;
+  const currentSkills = db.skills.find(s => s.userId === user.id).map((s: any) => s.name);
 
   if (!req.file) {
     return res.status(400).json({ error: "Please upload a resume file." });
@@ -750,16 +769,21 @@ routes.post("/api/resumes/analyze", authenticate, upload.single("resume"), (req:
 
   const offlineResult = extractResumeStatsOffline(fileName, fileText, targetCareer);
   const careerCompare = compareResumeToCareer(offlineResult.extractedSkills, careerSkills);
+  const recommendedCourses = recommendCoursesForCareer(targetCareer, currentSkills);
+  const salaryEstimate = salaryEstimateForCareer(targetCareer);
 
   const analysis = db.resumeAnalysis.insert({
     userId: user.id,
     fileName,
+    targetCareer,
     ...offlineResult,
     missingSkills: careerCompare.missingCareerSkills,
     careerMatchScore: careerCompare.matchScore,
     careerMissingSkills: careerCompare.missingCareerSkills,
     recommendedCareer: targetCareer,
-    recommendedCareerSkills: careerSkills
+    recommendedCareerSkills: careerSkills,
+    recommendedCourses,
+    careerSalaryEstimate: salaryEstimate
   });
 
   // Do not overwrite the user's career profile recommendation when analyzing a resume.
@@ -874,19 +898,6 @@ routes.get("/api/courses/recommendations", authenticate, (req: Request, res: Res
   };
 
   const recommendedCourses = recommendCoursesForCareer(advisory.recommendedCareer, currentSkills);
-  // Basic salary estimate helper (non-authoritative). Use local heuristics for display.
-  function salaryEstimateForCareer(career: string) {
-    const text = normalizeText(career);
-    if (text.includes("data") || text.includes("ml") || text.includes("ai")) return "₹8,00,000 - ₹20,00,000";
-    if (text.includes("frontend") || text.includes("ui") || text.includes("design")) return "₹4,00,000 - ₹12,00,000";
-    if (text.includes("devops") || text.includes("cloud") || text.includes("sre")) return "₹6,00,000 - ₹18,00,000";
-    if (text.includes("cyber") || text.includes("security")) return "₹5,00,000 - ₹16,00,000";
-    if (text.includes("product") || text.includes("manager")) return "₹10,00,000 - ₹25,00,000";
-    if (text.includes("backend") || text.includes("api")) return "₹5,00,000 - ₹15,00,000";
-    if (text.includes("full-stack") || text.includes("full stack")) return "₹6,00,000 - ₹18,00,000";
-    return "₹3,50,000 - ₹12,00,000";
-  }
-
   res.json({
     recommendedCareer: advisory.recommendedCareer,
     recommendedSkills: advisory.recommendedSkills,

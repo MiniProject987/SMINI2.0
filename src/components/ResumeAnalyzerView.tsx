@@ -67,6 +67,7 @@ export default function ResumeAnalyzerView({ token }: ResumeAnalyzerViewProps) {
   const [dragActive, setDragActive] = useState(false);
   const [loading, setLoading] = useState(true);
   const [targetCareer, setTargetCareer] = useState("");
+  const [targetCareerEdited, setTargetCareerEdited] = useState(false);
 
   const fetchHistory = async (autoSelect = true) => {
     if (!token) return;
@@ -102,7 +103,8 @@ export default function ResumeAnalyzerView({ token }: ResumeAnalyzerViewProps) {
         const res = await fetch("/api/profile", { headers: { Authorization: `Bearer ${token}` } });
         if (res.ok) {
           const data = await res.json();
-          if (!targetCareer && data.recommendedCareer) {
+          // Only auto-fill if the user hasn't manually edited the target career
+          if (!targetCareerEdited && data.recommendedCareer) {
             setTargetCareer(data.recommendedCareer);
           }
         }
@@ -111,6 +113,13 @@ export default function ResumeAnalyzerView({ token }: ResumeAnalyzerViewProps) {
       }
     };
     fetchProfile();
+    // Refresh when profileUpdated event is dispatched elsewhere
+    const onProfileUpdated = () => {
+      fetchProfile();
+      fetchHistory(false);
+    };
+    window.addEventListener("profileUpdated", onProfileUpdated);
+    return () => window.removeEventListener("profileUpdated", onProfileUpdated);
   }, [token]);
 
   // Drag and drop event handlers
@@ -229,7 +238,10 @@ export default function ResumeAnalyzerView({ token }: ResumeAnalyzerViewProps) {
               <input
                 type="text"
                 value={targetCareer}
-                onChange={(e) => setTargetCareer(e.target.value)}
+                onChange={(e) => {
+                  setTargetCareer(e.target.value);
+                  setTargetCareerEdited(true);
+                }}
                 placeholder="Optional: e.g. Frontend Developer"
                 className="w-full px-4 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-400"
               />
