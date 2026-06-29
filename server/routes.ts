@@ -1176,3 +1176,252 @@ What would you like to plan today?`;
 
   res.status(201).json(assistantMsg);
 });
+
+// ==========================================
+// 9. USER FEEDBACK & PILOT STUDY MODULE
+// ==========================================
+
+/**
+ * Feedback submission - users can report bugs, request features, etc.
+ */
+routes.get("/api/feedback/status", authenticate, (req: Request, res: Response) => {
+  const user = (req as any).user;
+  
+  if (!db.userFeedback) {
+    return res.json({
+      hasFeedback: false,
+      sessionFeedbackCount: 0,
+    });
+  }
+
+  const userFeedback = db.userFeedback.find((f: any) => f.userId === user.id) || [];
+  const sessionFeedback = userFeedback.filter((f: any) => {
+    const submittedDate = new Date(f.timestamp).toDateString();
+    const today = new Date().toDateString();
+    return submittedDate === today;
+  });
+
+  res.json({
+    hasFeedback: userFeedback.length > 0,
+    sessionFeedbackCount: sessionFeedback.length,
+    totalFeedbackCount: userFeedback.length,
+  });
+});
+
+routes.post("/api/feedback/submit", authenticate, (req: Request, res: Response) => {
+  const user = (req as any).user;
+  const { type, category, rating, title, description, pageContext } = req.body;
+
+  if (!type || !category || !rating || !title || !description) {
+    return res.status(400).json({ error: "Missing required feedback fields" });
+  }
+
+  if (rating < 1 || rating > 5) {
+    return res.status(400).json({ error: "Rating must be between 1 and 5" });
+  }
+
+  if (!db.userFeedback) {
+    db.userFeedback = [];
+  }
+
+  const feedback = {
+    userId: user.id,
+    type,
+    category,
+    rating: parseInt(rating),
+    title,
+    description,
+    pageContext: pageContext || "unknown",
+    timestamp: new Date().toISOString(),
+    resolved: false,
+  };
+
+  db.userFeedback.push(feedback);
+
+  console.log(`[Feedback] ${user.name} submitted ${type}: "${title}"`);
+
+  res.status(201).json({
+    success: true,
+    feedbackId: `feedback_${Date.now()}`,
+    message: "Thank you for your feedback!",
+    feedback,
+  });
+});
+
+routes.get("/api/feedback/history", authenticate, (req: Request, res: Response) => {
+  const user = (req as any).user;
+
+  if (!db.userFeedback) {
+    return res.json([]);
+  }
+
+  const userFeedback = db.userFeedback.filter((f: any) => f.userId === user.id) || [];
+  res.json(userFeedback);
+});
+
+/**
+ * Pilot study enrollment and responses
+ */
+routes.post("/api/pilot-study/enroll", authenticate, (req: Request, res: Response) => {
+  const user = (req as any).user;
+
+  if (!db.pilotStudyParticipants) {
+    db.pilotStudyParticipants = [];
+  }
+
+  const existing = db.pilotStudyParticipants.find((p: any) => p.userId === user.id);
+  if (existing) {
+    return res.status(400).json({ error: "User already enrolled in pilot study" });
+  }
+
+  const enrollment = {
+    userId: user.id,
+    enrolledAt: new Date().toISOString(),
+    phase: 1,
+    status: "active",
+    completedSurveys: 0,
+  };
+
+  db.pilotStudyParticipants.push(enrollment);
+
+  console.log(`[Pilot Study] ${user.name} enrolled`);
+
+  res.status(201).json({
+    success: true,
+    message: "Successfully enrolled in pilot study",
+    enrollment,
+  });
+});
+
+routes.post("/api/pilot-study/submit-response", authenticate, (req: Request, res: Response) => {
+  const user = (req as any).user;
+  const { studyPhase, questionId, rating, feedback } = req.body;
+
+  if (!studyPhase || !questionId || !rating) {
+    return res.status(400).json({ error: "Missing required pilot study fields" });
+  }
+
+  if (!db.pilotStudyResponses) {
+    db.pilotStudyResponses = [];
+  }
+
+  const response = {
+    userId: user.id,
+    studyPhase: parseInt(studyPhase),
+    questionId,
+    rating: parseInt(rating),
+    feedback: feedback || "",
+    completedAt: new Date().toISOString(),
+  };
+
+  db.pilotStudyResponses.push(response);
+
+  if (db.pilotStudyParticipants) {
+    const participant = db.pilotStudyParticipants.find((p: any) => p.userId === user.id);
+    if (participant) {
+      participant.completedSurveys = (participant.completedSurveys || 0) + 1;
+    }
+  }
+
+  console.log(`[Pilot Study] ${user.name} submitted response for phase ${studyPhase}`);
+
+  res.status(201).json({
+    success: true,
+    message: "Response recorded",
+    response,
+  });
+});
+
+routes.get("/api/pilot-study/progress", authenticate, (req: Request, res: Response) => {
+  const user = (req as any).user;
+
+  if (!db.pilotStudyParticipants) {
+    return res.status(404).json({ error: "User not enrolled in pilot study" });
+  }
+
+  const participant = db.pilotStudyParticipants.find((p: any) => p.userId === user.id);
+  if (!participant) {
+    return res.status(404).json({ error: "User not enrolled in pilot study" });
+  }
+
+  const responses = db.pilotStudyResponses
+    ? db.pilotStudyResponses.filter((r: any) => r.userId === user.id)
+    : [];
+
+  res.json({
+    enrollment: participant,
+    responsesSubmitted: responses.length,
+    lastResponseAt: responses.length > 0 ? responses[responses.length - 1].completedAt : null,
+  });
+});
+
+routes.get("/api/feedback/analytics", authenticate, (req: Request, res: Response) => {
+  const user = (req as any).user;
+
+  if (user.role !== "admin" && user.email !== "admin@example.com") {
+    return res.status(403).json({ error: "Unauthorized" });
+  }
+
+  const stats = {
+    totalSubmissions: db.userFeedback ? db.userFeedback.length : 0,
+    averageRating: 0,
+    feedbackByType: {} as Record<string, number>,
+    feedbackByCategory: {} as Record<string, number>,
+    pilotStudyParticipants: db.pilotStudyParticipants ? db.pilotStudyParticipants.length : 0,
+    pilotStudyResponses: db.pilotStudyResponses ? db.pilotStudyResponses.length : 0,
+  };
+
+  if (db.userFeedback && db.userFeedback.length > 0) {
+    const ratings = db.userFeedback.map((f: any) => f.rating);
+    stats.averageRating = ratings.reduce((a: number, b: number) => a + b, 0) / ratings.length;
+
+    db.userFeedback.forEach((f: any) => {
+      stats.feedbackByType[f.type] = (stats.feedbackByType[f.type] || 0) + 1;
+      stats.feedbackByCategory[f.category] = (stats.feedbackByCategory[f.category] || 0) + 1;
+    });
+  }
+
+  res.json(stats);
+});
+
+routes.get("/api/feedback/report", authenticate, (req: Request, res: Response) => {
+  const user = (req as any).user;
+
+  if (user.role !== "admin" && user.email !== "admin@example.com") {
+    return res.status(403).json({ error: "Unauthorized" });
+  }
+
+  const feedbackList = db.userFeedback || [];
+  const pilotParticipants = db.pilotStudyParticipants || [];
+  const pilotResponses = db.pilotStudyResponses || [];
+
+  const analysis = {
+    timestamp: new Date().toISOString(),
+    totalFeedbackSubmissions: feedbackList.length,
+    averageRating: feedbackList.length > 0 ? (feedbackList.reduce((sum: number, f: any) => sum + f.rating, 0) / feedbackList.length) : 0,
+    feedbackByType: {} as Record<string, number>,
+    feedbackByCategory: {} as Record<string, number>,
+    highPriorityIssues: feedbackList.filter((f: any) => f.rating <= 2).map(f => ({
+      type: f.type,
+      title: f.title,
+      rating: f.rating,
+    })),
+    pilotStudy: {
+      totalParticipants: pilotParticipants.length,
+      totalResponses: pilotResponses.length,
+      averagePhaseRating: pilotResponses.length > 0 ? (pilotResponses.reduce((sum: number, r: any) => sum + r.rating, 0) / pilotResponses.length) : 0,
+      responsesByPhase: {} as Record<number, number>,
+    },
+  };
+
+  feedbackList.forEach((f: any) => {
+    analysis.feedbackByType[f.type] = (analysis.feedbackByType[f.type] || 0) + 1;
+    analysis.feedbackByCategory[f.category] = (analysis.feedbackByCategory[f.category] || 0) + 1;
+  });
+
+  pilotResponses.forEach((r: any) => {
+    analysis.pilotStudy.responsesByPhase[r.studyPhase] = (analysis.pilotStudy.responsesByPhase[r.studyPhase] || 0) + 1;
+  });
+
+  res.json(analysis);
+});

@@ -87,5 +87,23 @@
     "recommendations": "Match found: Analytical Technical disciplines. Strongly recommend Full-Stack, Cyber, and AI/ML pathways.",
     "createdAt": "2026-06-26T07:40:37.784Z",
     "id": "rec_1782459637784_apzoc"
+  },
+  {
+    "userId": "rec_1782384245418_89n0l",
+    "type": "RIASEC",
+    "score": 85,
+    "answers": "Realistic:5|Investigative:3|Artistic:3|Social:0|Enterprising:3|Conventional:0",
+    "recommendations": "Match found: Analytical Technical disciplines. Strongly recommend Full-Stack, Cyber, and AI/ML pathways.",
+    "createdAt": "2026-06-28T09:49:46.077Z",
+    "id": "rec_1782640186077_mpbbs"
+  },
+  {
+    "userId": "rec_1782384245418_89n0l",
+    "type": "Aptitude",
+    "score": 0,
+    "answers": "Score:0|Correct:0|Total:3",
+    "recommendations": "Strengthen algorithmic basics and practice Logical/Quantitative problem sheets daily.",
+    "createdAt": "2026-06-28T09:50:21.377Z",
+    "id": "rec_1782640221378_upddh"
   }
 ]

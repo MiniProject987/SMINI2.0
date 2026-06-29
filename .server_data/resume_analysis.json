@@ -2313,5 +2313,623 @@
       "REST APIs"
     ],
     "id": "rec_1782491903318_4grdx"
+  },
+  {
+    "userId": "rec_1782615041161_v2ptv",
+    "fileName": "ATS_Full_Stack_Developer_Resume.pdf",
+    "targetCareer": "Developer",
+    "overallScore": 65,
+    "atsScore": 60,
+    "formatScore": 80,
+    "skillsScore": 62,
+    "educationScore": 85,
+    "experienceScore": 35,
+    "keywordsScore": 55,
+    "strengths": [
+      "Outstanding academic record with high grades/CGPA",
+      "Diverse range of projects covering AI, Web Development, and Databases",
+      "Strong core Computer Science fundamentals (DSA, OOPs, DBMS)"
+    ],
+    "weaknesses": [
+      "Lack of formal professional work experience or industrial internships",
+      "Missing exposure to modern high-velocity enterprise frameworks (e.g., React, Spring Boot)",
+      "Projects lack impact-based descriptions or production metrics"
+    ],
+    "suggestions": [
+      "Quantify project achievements using metrics (e.g., 'achieved 95% accuracy in face recognition' or 'reduced data retrieval time by 20%')",
+      "Include clickable links to your GitHub repositories or live project demos",
+      "Add a 'Relevant Coursework' section to showcase specialized learning in your degree",
+      "Clarify your role in software hackathons and highlight specific problem solving",
+      "Diversify the 'Technical Skills' section by adding modern web frameworks or cloud platforms you are currently learning"
+    ],
+    "missingSkills": [
+      "REST APIs"
+    ],
+    "recommendedCareer": "Developer",
+    "recommendedCareerSkills": [
+      "JavaScript",
+      "Python",
+      "SQL",
+      "Git",
+      "REST APIs"
+    ],
+    "extractedSkills": [
+      "C",
+      "CN",
+      "Ai",
+      "C",
+      "Java",
+      "Python",
+      "Javascript",
+      "HTML",
+      "MySQL",
+      "Git",
+      "Github",
+      "DSA",
+      "OOPs",
+      "Web development"
+    ],
+    "careerMatchScore": 80,
+    "careerMissingSkills": [
+      "REST APIs"
+    ],
+    "recommendedCourses": [
+      {
+        "id": "course_1",
+        "title": "Development",
+        "provider": "Coursera",
+        "duration": "weeks",
+        "difficulty": "Beginner",
+        "skillsTaught": [
+          "React.js",
+          "Node.js",
+          "JavaScript",
+          "HTML"
+        ],
+        "link": "https://www.coursera.org/specializations/full-stack-react",
+        "source": "Coursera",
+        "matchingSkills": [
+          "JavaScript"
+        ],
+        "newSkills": [
+          "React.js",
+          "Node.js",
+          "JavaScript",
+          "HTML"
+        ],
+        "score": 35,
+        "platform": "Coursera",
+        "rank": 1
+      },
+      {
+        "id": "course_3",
+        "title": "Bootcamp",
+        "provider": "edX",
+        "duration": "weeks",
+        "difficulty": "Intermediate",
+        "skillsTaught": [
+          "Python",
+          "Pandas",
+          "scikit-learn",
+          "MySQL"
+        ],
+        "link": "https://www.edx.org/course/data-science",
+        "source": "edX",
+        "matchingSkills": [
+          "Python"
+        ],
+        "newSkills": [
+          "Python",
+          "Pandas",
+          "scikit-learn",
+          "MySQL"
+        ],
+        "score": 35,
+        "platform": "edX",
+        "rank": 2
+      },
+      {
+        "id": "course_4",
+        "title": "Vision",
+        "provider": "Pluralsight",
+        "duration": "weeks",
+        "difficulty": "Intermediate",
+        "skillsTaught": [
+          "AI/ML",
+          "OpenCV",
+          "LBPH",
+          "Python"
+        ],
+        "link": "https://www.pluralsight.com/courses/computer-vision",
+        "source": "Pluralsight",
+        "matchingSkills": [
+          "Python"
+        ],
+        "newSkills": [
+          "AI/ML",
+          "OpenCV",
+          "LBPH",
+          "Python"
+        ],
+        "score": 35,
+        "platform": "Pluralsight",
+        "rank": 3
+      },
+      {
+        "id": "course_6",
+        "title": "Fundamentals",
+        "provider": "Simplilearn",
+        "duration": "weeks",
+        "difficulty": "Beginner",
+        "skillsTaught": [
+          "Security",
+          "Networking",
+          "Linux"
+        ],
+        "link": "https://www.simplilearn.com/cyber-security-fundamentals",
+        "source": "Simplilearn",
+        "matchingSkills": [],
+        "newSkills": [
+          "Security",
+          "Networking",
+          "Linux"
+        ],
+        "score": 15,
+        "platform": "Simplilearn",
+        "rank": 4
+      },
+      {
+        "id": "course_7",
+        "title": "Masterclass",
+        "provider": "Academy",
+        "duration": "weeks",
+        "difficulty": "Beginner",
+        "skillsTaught": [
+          "Design",
+          "Figma"
+        ],
+        "link": "https://www.figma.com/resources/learning-design/",
+        "source": "Academy",
+        "matchingSkills": [],
+        "newSkills": [
+          "Design",
+          "Figma"
+        ],
+        "score": 10,
+        "platform": "Academy",
+        "rank": 5
+      },
+      {
+        "id": "course_2",
+        "title": "Programming",
+        "provider": "Udemy",
+        "duration": "weeks",
+        "difficulty": "Intermediate",
+        "skillsTaught": [
+          "APIs"
+        ],
+        "link": "https://www.udemy.com/course/java-programming/",
+        "source": "Udemy",
+        "matchingSkills": [],
+        "newSkills": [
+          "APIs"
+        ],
+        "score": 5,
+        "platform": "Udemy",
+        "rank": 6
+      }
+    ],
+    "careerSalaryEstimate": "₹3,50,000 - ₹12,00,000",
+    "id": "rec_1782615074203_t5bn0"
+  },
+  {
+    "userId": "rec_1782384245418_89n0l",
+    "fileName": "AI_ML_Resume_ATS_95.pdf",
+    "targetCareer": "Data Scientist",
+    "overallScore": 65,
+    "atsScore": 60,
+    "formatScore": 80,
+    "skillsScore": 62,
+    "educationScore": 85,
+    "experienceScore": 35,
+    "keywordsScore": 55,
+    "strengths": [
+      "Outstanding academic record with high grades/CGPA",
+      "Diverse range of projects covering AI, Web Development, and Databases",
+      "Strong core Computer Science fundamentals (DSA, OOPs, DBMS)"
+    ],
+    "weaknesses": [
+      "Lack of formal professional work experience or industrial internships",
+      "Missing exposure to modern high-velocity enterprise frameworks (e.g., React, Spring Boot)",
+      "Projects lack impact-based descriptions or production metrics"
+    ],
+    "suggestions": [
+      "Quantify project achievements using metrics (e.g., 'achieved 95% accuracy in face recognition' or 'reduced data retrieval time by 20%')",
+      "Include clickable links to your GitHub repositories or live project demos",
+      "Add a 'Relevant Coursework' section to showcase specialized learning in your degree",
+      "Clarify your role in software hackathons and highlight specific problem solving",
+      "Diversify the 'Technical Skills' section by adding modern web frameworks or cloud platforms you are currently learning"
+    ],
+    "missingSkills": [
+      "Python",
+      "Pandas",
+      "SQL"
+    ],
+    "recommendedCareer": "Data Scientist",
+    "recommendedCareerSkills": [
+      "Python",
+      "Pandas",
+      "scikit-learn",
+      "SQL",
+      "Machine Learning"
+    ],
+    "extractedSkills": [
+      "C",
+      "CN",
+      "Ai",
+      "Ml",
+      "Gcp"
+    ],
+    "careerMatchScore": 40,
+    "careerMissingSkills": [
+      "Python",
+      "Pandas",
+      "SQL"
+    ],
+    "recommendedCourses": [
+      {
+        "id": "course_3",
+        "title": "Bootcamp",
+        "provider": "edX",
+        "duration": "weeks",
+        "difficulty": "Intermediate",
+        "skillsTaught": [
+          "Python",
+          "Pandas",
+          "scikit-learn",
+          "MySQL"
+        ],
+        "link": "https://www.edx.org/course/data-science",
+        "source": "edX",
+        "matchingSkills": [
+          "Python",
+          "Pandas",
+          "scikit-learn"
+        ],
+        "newSkills": [
+          "Python",
+          "Pandas",
+          "scikit-learn",
+          "MySQL"
+        ],
+        "score": 65,
+        "platform": "edX",
+        "rank": 1
+      },
+      {
+        "id": "course_4",
+        "title": "Vision",
+        "provider": "Pluralsight",
+        "duration": "weeks",
+        "difficulty": "Intermediate",
+        "skillsTaught": [
+          "AI/ML",
+          "OpenCV",
+          "LBPH",
+          "Python"
+        ],
+        "link": "https://www.pluralsight.com/courses/computer-vision",
+        "source": "Pluralsight",
+        "matchingSkills": [
+          "Python"
+        ],
+        "newSkills": [
+          "AI/ML",
+          "OpenCV",
+          "LBPH",
+          "Python"
+        ],
+        "score": 35,
+        "platform": "Pluralsight",
+        "rank": 2
+      },
+      {
+        "id": "course_1",
+        "title": "Development",
+        "provider": "Coursera",
+        "duration": "weeks",
+        "difficulty": "Beginner",
+        "skillsTaught": [
+          "React.js",
+          "Node.js",
+          "JavaScript",
+          "HTML"
+        ],
+        "link": "https://www.coursera.org/specializations/full-stack-react",
+        "source": "Coursera",
+        "matchingSkills": [],
+        "newSkills": [
+          "Node.js",
+          "JavaScript",
+          "HTML"
+        ],
+        "score": 15,
+        "platform": "Coursera",
+        "rank": 3
+      },
+      {
+        "id": "course_6",
+        "title": "Fundamentals",
+        "provider": "Simplilearn",
+        "duration": "weeks",
+        "difficulty": "Beginner",
+        "skillsTaught": [
+          "Security",
+          "Networking",
+          "Linux"
+        ],
+        "link": "https://www.simplilearn.com/cyber-security-fundamentals",
+        "source": "Simplilearn",
+        "matchingSkills": [],
+        "newSkills": [
+          "Security",
+          "Networking",
+          "Linux"
+        ],
+        "score": 15,
+        "platform": "Simplilearn",
+        "rank": 4
+      },
+      {
+        "id": "course_7",
+        "title": "Masterclass",
+        "provider": "Academy",
+        "duration": "weeks",
+        "difficulty": "Beginner",
+        "skillsTaught": [
+          "Design",
+          "Figma"
+        ],
+        "link": "https://www.figma.com/resources/learning-design/",
+        "source": "Academy",
+        "matchingSkills": [],
+        "newSkills": [
+          "Design",
+          "Figma"
+        ],
+        "score": 10,
+        "platform": "Academy",
+        "rank": 5
+      },
+      {
+        "id": "course_2",
+        "title": "Programming",
+        "provider": "Udemy",
+        "duration": "weeks",
+        "difficulty": "Intermediate",
+        "skillsTaught": [
+          "APIs"
+        ],
+        "link": "https://www.udemy.com/course/java-programming/",
+        "source": "Udemy",
+        "matchingSkills": [],
+        "newSkills": [
+          "APIs"
+        ],
+        "score": 5,
+        "platform": "Udemy",
+        "rank": 6
+      }
+    ],
+    "careerSalaryEstimate": "₹8,00,000 - ₹20,00,000",
+    "id": "rec_1782640356192_rbtp2"
+  },
+  {
+    "userId": "rec_1782384245418_89n0l",
+    "fileName": "SaniyaHKJSS.pdf",
+    "targetCareer": "Data Scientist",
+    "overallScore": 72,
+    "atsScore": 68,
+    "formatScore": 85,
+    "skillsScore": 72,
+    "educationScore": 95,
+    "experienceScore": 40,
+    "keywordsScore": 62,
+    "strengths": [
+      "Outstanding academic record with high grades/CGPA",
+      "Diverse range of projects covering AI, Web Development, and Databases",
+      "Strong core Computer Science fundamentals (DSA, OOPs, DBMS)"
+    ],
+    "weaknesses": [
+      "Lack of formal professional work experience or industrial internships",
+      "Missing exposure to modern high-velocity enterprise frameworks (e.g., React, Spring Boot)",
+      "Projects lack impact-based descriptions or production metrics"
+    ],
+    "suggestions": [
+      "Quantify project achievements using metrics (e.g., 'achieved 95% accuracy in face recognition' or 'reduced data retrieval time by 20%')",
+      "Include clickable links to your GitHub repositories or live project demos",
+      "Add a 'Relevant Coursework' section to showcase specialized learning in your degree",
+      "Clarify your role in software hackathons and highlight specific problem solving",
+      "Diversify the 'Technical Skills' section by adding modern web frameworks or cloud platforms you are currently learning"
+    ],
+    "missingSkills": [
+      "Pandas"
+    ],
+    "recommendedCareer": "Data Scientist",
+    "recommendedCareerSkills": [
+      "Python",
+      "Pandas",
+      "scikit-learn",
+      "SQL",
+      "Machine Learning"
+    ],
+    "extractedSkills": [
+      "C",
+      "CN",
+      "Ai",
+      "Ml",
+      "C",
+      "Java",
+      "Python",
+      "Javascript",
+      "HTML",
+      "MySQL",
+      "Git",
+      "Github",
+      "DSA",
+      "OOPs",
+      "Web development"
+    ],
+    "careerMatchScore": 80,
+    "careerMissingSkills": [
+      "Pandas"
+    ],
+    "recommendedCourses": [
+      {
+        "id": "course_3",
+        "title": "Bootcamp",
+        "provider": "edX",
+        "duration": "weeks",
+        "difficulty": "Intermediate",
+        "skillsTaught": [
+          "Python",
+          "Pandas",
+          "scikit-learn",
+          "MySQL"
+        ],
+        "link": "https://www.edx.org/course/data-science",
+        "source": "edX",
+        "matchingSkills": [
+          "Python",
+          "Pandas",
+          "scikit-learn"
+        ],
+        "newSkills": [
+          "Python",
+          "Pandas",
+          "scikit-learn",
+          "MySQL"
+        ],
+        "score": 65,
+        "platform": "edX",
+        "rank": 1
+      },
+      {
+        "id": "course_4",
+        "title": "Vision",
+        "provider": "Pluralsight",
+        "duration": "weeks",
+        "difficulty": "Intermediate",
+        "skillsTaught": [
+          "AI/ML",
+          "OpenCV",
+          "LBPH",
+          "Python"
+        ],
+        "link": "https://www.pluralsight.com/courses/computer-vision",
+        "source": "Pluralsight",
+        "matchingSkills": [
+          "Python"
+        ],
+        "newSkills": [
+          "AI/ML",
+          "OpenCV",
+          "LBPH",
+          "Python"
+        ],
+        "score": 35,
+        "platform": "Pluralsight",
+        "rank": 2
+      },
+      {
+        "id": "course_1",
+        "title": "Development",
+        "provider": "Coursera",
+        "duration": "weeks",
+        "difficulty": "Beginner",
+        "skillsTaught": [
+          "React.js",
+          "Node.js",
+          "JavaScript",
+          "HTML"
+        ],
+        "link": "https://www.coursera.org/specializations/full-stack-react",
+        "source": "Coursera",
+        "matchingSkills": [],
+        "newSkills": [
+          "Node.js",
+          "JavaScript",
+          "HTML"
+        ],
+        "score": 15,
+        "platform": "Coursera",
+        "rank": 3
+      },
+      {
+        "id": "course_6",
+        "title": "Fundamentals",
+        "provider": "Simplilearn",
+        "duration": "weeks",
+        "difficulty": "Beginner",
+        "skillsTaught": [
+          "Security",
+          "Networking",
+          "Linux"
+        ],
+        "link": "https://www.simplilearn.com/cyber-security-fundamentals",
+        "source": "Simplilearn",
+        "matchingSkills": [],
+        "newSkills": [
+          "Security",
+          "Networking",
+          "Linux"
+        ],
+        "score": 15,
+        "platform": "Simplilearn",
+        "rank": 4
+      },
+      {
+        "id": "course_7",
+        "title": "Masterclass",
+        "provider": "Academy",
+        "duration": "weeks",
+        "difficulty": "Beginner",
+        "skillsTaught": [
+          "Design",
+          "Figma"
+        ],
+        "link": "https://www.figma.com/resources/learning-design/",
+        "source": "Academy",
+        "matchingSkills": [],
+        "newSkills": [
+          "Design",
+          "Figma"
+        ],
+        "score": 10,
+        "platform": "Academy",
+        "rank": 5
+      },
+      {
+        "id": "course_2",
+        "title": "Programming",
+        "provider": "Udemy",
+        "duration": "weeks",
+        "difficulty": "Intermediate",
+        "skillsTaught": [
+          "APIs"
+        ],
+        "link": "https://www.udemy.com/course/java-programming/",
+        "source": "Udemy",
+        "matchingSkills": [],
+        "newSkills": [
+          "APIs"
+        ],
+        "score": 5,
+        "platform": "Udemy",
+        "rank": 6
+      }
+    ],
+    "careerSalaryEstimate": "₹8,00,000 - ₹20,00,000",
+    "id": "rec_1782640365407_c6lxm"
   }
 ]

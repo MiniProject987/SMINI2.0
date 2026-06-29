@@ -1,0 +1,57 @@
+{
+  "timestamp": "2026-06-29T08:09:30.007248",
+  "dataset_statistics": {
+    "career_profiles_count": 60,
+    "job_listings_count": 40,
+    "total_training_samples": 2400,
+    "expected_combinations": 2400
+  },
+  "career_profiles_columns": [
+    "id",
+    "userId",
+    "headline",
+    "location",
+    "workPreference",
+    "experienceLevel",
+    "bio",
+    "careerGoals",
+    "technicalSkills",
+    "softSkills",
+    "certifications",
+    "interests",
+    "preferredRoles",
+    "employabilityScore",
+    "careerReadinessScore"
+  ],
+  "job_listings_columns": [
+    "id",
+    "title",
+    "company",
+    "location",
+    "type",
+    "experience",
+    "salary",
+    "skillsRequired",
+    "description"
+  ],
+  "training_features": [
+    "profile_skill_count",
+    "job_skill_count",
+    "shared_skill_count",
+    "skill_overlap_ratio",
+    "prefers_remote",
+    "job_is_remote",
+    "job_is_hybrid",
+    "job_is_onsite",
+    "experience_distance",
+    "location_match",
+    "headline_count"
+  ],
+  "target_label_statistics": {
+    "mean": 13.311111111111112,
+    "std": 22.16547731645882,
+    "min": 0.0,
+    "max": 100.0,
+    "median": 5.0
+  }
+}

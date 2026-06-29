@@ -907,7 +907,8 @@
       "Numpy",
       "Matplotlib",
       "AWS",
-      "git and github"
+      "git and github",
+      "React.js"
     ],
     "softSkills": [
       "Analytical Thinking",
@@ -950,8 +951,8 @@
       "Deep Learning Engineer",
       "Data Analyst"
     ],
-    "employabilityScore": 65,
-    "careerReadinessScore": 100,
+    "employabilityScore": 73,
+    "careerReadinessScore": 78,
     "id": "rec_1782384245420_setuu",
     "recommendedCareer": "Data Scientist",
     "recommendedCareerSkills": [
@@ -960,6 +961,31 @@
       "scikit-learn",
       "SQL",
       "Machine Learning"
+    ]
+  },
+  {
+    "userId": "rec_1782615041161_v2ptv",
+    "headline": "",
+    "location": "",
+    "workPreference": "Remote",
+    "experienceLevel": "Entry Level",
+    "bio": "",
+    "careerGoals": "",
+    "technicalSkills": [],
+    "softSkills": [],
+    "certifications": [],
+    "interests": [],
+    "preferredRoles": [],
+    "employabilityScore": 30,
+    "careerReadinessScore": 30,
+    "id": "rec_1782615041164_wds0b",
+    "recommendedCareer": "Software Engineer",
+    "recommendedCareerSkills": [
+      "JavaScript",
+      "Python",
+      "SQL",
+      "Git",
+      "REST APIs"
     ]
   }
 ]
