@@ -987,5 +987,107 @@
       "Git",
       "REST APIs"
     ]
+  },
+  {
+    "userId": "rec_1782708505281_9v17b",
+    "headline": "Frontend Web Developer",
+    "location": "",
+    "workPreference": "Remote",
+    "experienceLevel": "Mid Level",
+    "bio": "Passionate about building beautiful UIs",
+    "careerGoals": "",
+    "technicalSkills": [
+      "React.js",
+      "TypeScript",
+      "HTML",
+      "CSS",
+      "Figma"
+    ],
+    "softSkills": [],
+    "certifications": [],
+    "interests": [],
+    "preferredRoles": [
+      "Frontend Developer",
+      "UI/UX Engineer"
+    ],
+    "employabilityScore": 85,
+    "careerReadinessScore": 90,
+    "id": "rec_1782708505283_wrhsq",
+    "recommendedCareer": "Frontend Developer",
+    "recommendedCareerSkills": [
+      "React.js",
+      "TypeScript",
+      "HTML",
+      "CSS",
+      "Figma"
+    ]
+  },
+  {
+    "userId": "rec_1782708507296_wfsl9",
+    "headline": "Data Scientist & ML Engineer",
+    "location": "",
+    "workPreference": "Remote",
+    "experienceLevel": "Senior",
+    "bio": "Building ML models to solve real problems",
+    "careerGoals": "",
+    "technicalSkills": [
+      "Python",
+      "Pandas",
+      "scikit-learn",
+      "SQL",
+      "TensorFlow"
+    ],
+    "softSkills": [],
+    "certifications": [],
+    "interests": [],
+    "preferredRoles": [
+      "Data Scientist",
+      "Machine Learning Engineer"
+    ],
+    "employabilityScore": 85,
+    "careerReadinessScore": 90,
+    "id": "rec_1782708507297_8oglz",
+    "recommendedCareer": "Data Scientist",
+    "recommendedCareerSkills": [
+      "Python",
+      "Pandas",
+      "scikit-learn",
+      "SQL",
+      "Machine Learning"
+    ]
+  },
+  {
+    "userId": "rec_1782708509314_p4z84",
+    "headline": "DevOps & Cloud Infrastructure Engineer",
+    "location": "",
+    "workPreference": "Remote",
+    "experienceLevel": "Senior",
+    "bio": "Designing scalable cloud solutions",
+    "careerGoals": "",
+    "technicalSkills": [
+      "Docker",
+      "Kubernetes",
+      "AWS",
+      "CI/CD",
+      "Terraform"
+    ],
+    "softSkills": [],
+    "certifications": [],
+    "interests": [],
+    "preferredRoles": [
+      "DevOps Engineer",
+      "Site Reliability Engineer"
+    ],
+    "employabilityScore": 85,
+    "careerReadinessScore": 90,
+    "id": "rec_1782708509315_c70go",
+    "recommendedCareer": "DevOps Engineer",
+    "recommendedCareerSkills": [
+      "Docker",
+      "Kubernetes",
+      "AWS/Cloud Services",
+      "CI/CD",
+      "Terraform"
+    ]
   }
 ]

@@ -139,8 +139,17 @@ routes.get("/api/profile", authenticate, (req: Request, res: Response) => {
       employabilityScore: 45,
       careerReadinessScore: 48
     });
+    console.log(`[API] GET /api/profile - Created new profile for user ${user.email}`);
   }
-  res.json(profile);
+  
+  // Compute fresh career recommendation based on current profile state
+  const advisory = updateCareerRecommendation(user);
+  const responseProfile = advisory && profile
+    ? { ...profile, recommendedCareer: advisory.recommendedCareer, recommendedCareerSkills: advisory.recommendedSkills }
+    : profile;
+  
+  console.log(`[API] GET /api/profile - Returning profile for user ${user.email} with recommendation: ${responseProfile.recommendedCareer || "None"}`);
+  res.json(responseProfile);
 });
 
 // Calculate heuristic scores for offline fallback
@@ -431,6 +440,8 @@ function updateCareerRecommendation(user: any) {
   const skillsList = db.skills.find(s => s.userId === user.id);
   const assessmentHistory = db.assessments.find(a => a.userId === user.id);
   const advisory = determineRecommendedCareer(profile, skillsList, assessmentHistory);
+
+  console.log(`[RECOMMENDATION] User: ${user.email} | Career: ${advisory.recommendedCareer} | Skills: ${advisory.recommendedSkills.join(", ")}`);
 
   db.careerProfiles.update(profile.id, {
     recommendedCareer: advisory.recommendedCareer,

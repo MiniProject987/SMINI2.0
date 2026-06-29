@@ -33,5 +33,26 @@
     "name": "ANIL ",
     "role": "student",
     "id": "rec_1782615041161_v2ptv"
+  },
+  {
+    "email": "alice.frontend.1782708503@test.com",
+    "password": "test123456",
+    "name": "Alice Frontend",
+    "role": "student",
+    "id": "rec_1782708505281_9v17b"
+  },
+  {
+    "email": "bob.datascience.1782708503@test.com",
+    "password": "test123456",
+    "name": "Bob DataScience",
+    "role": "student",
+    "id": "rec_1782708507296_wfsl9"
+  },
+  {
+    "email": "charlie.devops.1782708503@test.com",
+    "password": "test123456",
+    "name": "Charlie DevOps",
+    "role": "student",
+    "id": "rec_1782708509314_p4z84"
   }
 ]
